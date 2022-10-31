@@ -3,22 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shenxiu-cloud</artifactId>
+        <artifactId>shenxiu-common</artifactId>
         <groupId>site.shenxiu</groupId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shenxiu-common</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>shenxiu-common-core</artifactId>
 
     <description>
-        shenxiu-common 通用模块
+        shenxiu-common-core 核心模块
     </description>
-
-    <modules>
-        <module>shenxiu-common-feign</module>
-        <module>shenxiu-common-core</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
 </project>
