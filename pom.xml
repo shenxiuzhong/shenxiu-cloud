@@ -100,13 +100,13 @@
             </dependency>
 
             <!-- SpringCloud Alibaba 微服务 -->
-            <!--<dependency>
+            <dependency>
                 <groupId>site.shenxiu</groupId>
                 <artifactId>shenxiu-common-alibaba-bom</artifactId>
                 <version>${shenxiu.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>-->
+            </dependency>
 
             <!-- SpringBoot 依赖配置 -->
             <dependency>
