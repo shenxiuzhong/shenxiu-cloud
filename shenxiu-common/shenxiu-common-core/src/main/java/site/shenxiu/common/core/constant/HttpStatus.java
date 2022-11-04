@@ -3,8 +3,8 @@ package site.shenxiu.common.core.constant;
 /**
  * 返回状态码
  *
- * @author Shenxiu
- * @date 2022/10/31 9:57
+ * @author ShenXiu
+ * @version 2022/10/31 9:57
  * @see java.net.HttpURLConnection
  */
 public interface HttpStatus {

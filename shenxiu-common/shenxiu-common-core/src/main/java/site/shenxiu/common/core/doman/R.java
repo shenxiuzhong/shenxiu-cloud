@@ -9,8 +9,8 @@ import java.io.Serializable;
 /**
  * 响应信息主体
  *
- * @author Shenxiu
- * @date 2022/10/31 10:08
+ * @author ShenXiu
+ * @version 2022/10/31 10:08
  */
 @Data
 @NoArgsConstructor

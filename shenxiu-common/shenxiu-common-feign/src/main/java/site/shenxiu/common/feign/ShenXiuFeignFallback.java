@@ -2,6 +2,12 @@ package site.shenxiu.common.feign;
 
 
 import com.sun.istack.internal.Nullable;
+import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
+import site.shenxiu.common.core.constant.HttpStatus;
+import site.shenxiu.common.core.doman.R;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
@@ -11,15 +17,15 @@ import java.util.Objects;
  * 全局的fallback处理器
  *
  * @author zxx
- * @date2022/8/15 11:57
+ * @version 2022/8/15 11:57
  */
 @Slf4j
-public class ShenxiuFeignFallback<T> implements MethodInterceptor {
+public class ShenXiuFeignFallback<T> implements MethodInterceptor {
     private Class<T> targetType;
     private String targetName;
     private Throwable cause;
 
-    public ShenxiuFeignFallback(Class<T> targetType, String targetName, Throwable cause) {
+    public ShenXiuFeignFallback(Class<T> targetType, String targetName, Throwable cause) {
         this.targetType = targetType;
         this.targetName = targetName;
         this.cause = cause;
@@ -35,7 +41,8 @@ public class ShenxiuFeignFallback<T> implements MethodInterceptor {
         if(cause instanceof FeignException){
             //告警代码实现 ......
             //此处只是示例,具体可以返回带有业务错误数据的对象
-            return R.fail(HttpStatus.SYSTEM_INNER_ERROR,cause.getMessage());
+
+            return R.fail(HttpStatus.ERROR,cause.getMessage());
         }else{
             //非feign异常
 
@@ -52,7 +59,7 @@ public class ShenxiuFeignFallback<T> implements MethodInterceptor {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ShenxiuFeignFallback<?> that = (ShenxiuFeignFallback<?>) o;
+        ShenXiuFeignFallback<?> that = (ShenXiuFeignFallback<?>) o;
         return targetType.equals(that.targetType);
     }
 

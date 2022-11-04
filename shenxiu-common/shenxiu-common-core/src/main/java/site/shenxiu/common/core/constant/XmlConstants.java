@@ -3,8 +3,8 @@ package site.shenxiu.common.core.constant;
 /**
  * XML常用常量
  *
- * @author Shenxiu
- * @date 2022/11/1 12:41
+ * @author ShenXiu
+ * @version 2022/11/1 12:41
  */
 public interface XmlConstants {
 

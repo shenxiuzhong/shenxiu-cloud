@@ -1,14 +1,19 @@
 package site.shenxiu.common.feign;
 
 
+import feign.Target;
+import lombok.AllArgsConstructor;
+import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cloud.openfeign.FallbackFactory;
+
 /**
  * 全局熔断降级处理 全局熔断FallbackFactory实现类
  *
  * @author zxx
- * @date2022/8/15 10:48
+ * @version 2022/8/15 10:48
  */
 @AllArgsConstructor
-public class ShenxiuGlobalFallbackFactory<T> implements FallbackFactory<T> {
+public class ShenXiuGlobalFallbackFactory<T> implements FallbackFactory<T> {
 
     /**
      * 被代理目标对象
@@ -23,7 +28,7 @@ public class ShenxiuGlobalFallbackFactory<T> implements FallbackFactory<T> {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(targetType);
         enhancer.setUseCache(true);
-        enhancer.setCallback(new ShenxiuFeignFallback<>(targetType, targetName, cause));
+        enhancer.setCallback(new ShenXiuFeignFallback<>(targetType, targetName, cause));
         return (T) enhancer.create();
     }
 }

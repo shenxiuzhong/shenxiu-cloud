@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  site.shenxiu.common.feign.ShenXiuSentinelFeignAutoConfiguration,\
+  site.shenxiu.common.feign.interceptor.ShenXiuFeignInterceptor
+

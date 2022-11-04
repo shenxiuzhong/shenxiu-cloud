@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Scope;
 
 /**
  * 自定义Feign熔断自动装配配置
+ * <p> 替换SentinelFeign<p/>
+ * @author ShenXiu
+ * @version 2022/11/4 11:13
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass({ SphU.class, Feign.class })
@@ -21,6 +24,6 @@ public class ShenXiuSentinelFeignAutoConfiguration {
     @Scope("prototype")
     @ConditionalOnProperty(name = "feign.sentinel.enabled")
     public Feign.Builder feignSentinelBuilder() {
-        return com.shenxiu.common.core.feign.ShenXiuSentinelFeign.builder();
+        return ShenXiuSentinelFeign.builder();
     }
 }

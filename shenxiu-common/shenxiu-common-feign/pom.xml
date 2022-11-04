@@ -51,6 +51,13 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>site.shenxiu</groupId>
+            <artifactId>shenxiu-common-core</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
 
     </dependencies>
 

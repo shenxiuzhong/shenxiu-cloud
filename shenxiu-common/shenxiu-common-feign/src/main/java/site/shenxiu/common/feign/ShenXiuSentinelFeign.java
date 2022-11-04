@@ -1,16 +1,3 @@
-/*
- * Copyright 2012-2022 The Feign Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
 package site.shenxiu.common.feign;
 
 import com.alibaba.cloud.sentinel.feign.SentinelContractHolder;
@@ -39,9 +26,11 @@ import java.util.Map;
  * decorates normal Feign methods with circuit breakers, but calls {@link}
  * directly.
  * 自定义熔断器
+ *
+ * @author ShenXiu
+ * @version 2022/11/4 11:15
  */
 public final class ShenXiuSentinelFeign {
-
     private ShenXiuSentinelFeign() {
     }
 
@@ -49,7 +38,7 @@ public final class ShenXiuSentinelFeign {
         return new Builder();
     }
 
-    public static final class Builder extends Feign.Builder implements ApplicationContextAware {
+    public static final class Builder extends feign.Feign.Builder implements ApplicationContextAware {
         private Contract contract = new Contract.Default();
         private ApplicationContext applicationContext;
         private FeignContext feignContext;
@@ -61,6 +50,7 @@ public final class ShenXiuSentinelFeign {
         public Builder invocationHandlerFactory(InvocationHandlerFactory invocationHandlerFactory) {
             throw new UnsupportedOperationException();
         }
+
         @Override
         public Builder contract(Contract contract) {
             this.contract = contract;
@@ -70,7 +60,7 @@ public final class ShenXiuSentinelFeign {
         @Override
         public <T> T target(Target<T> target) {
             // 自定义熔断器
-            return (T) this.target(target, new GlobalFallbackFactory(target));
+            return (T) this.target(target, new ShenXiuGlobalFallbackFactory(target));
         }
 
         /**
@@ -84,14 +74,14 @@ public final class ShenXiuSentinelFeign {
             super.invocationHandlerFactory(new InvocationHandlerFactory() {
                 @Override
                 public InvocationHandler create(Target target, Map<Method, MethodHandler> dispatch) {
-                    GenericApplicationContext gctx = (GenericApplicationContext) Builder.this.applicationContext;
+                    GenericApplicationContext gctx = (GenericApplicationContext) ShenXiuSentinelFeign.Builder.this.applicationContext;
                     BeanDefinition def = gctx.getBeanDefinition(target.type().getName());
                     FeignClientFactoryBean feignClientFactoryBean = (FeignClientFactoryBean) def.getAttribute("feignClientsRegistrarFactoryBean");
                     Class fallback = feignClientFactoryBean.getFallback();
                     Class fallbackFactory = feignClientFactoryBean.getFallbackFactory();
                     String beanName = feignClientFactoryBean.getContextId();
                     if (!StringUtils.hasText(beanName)) {
-                        beanName = (String) Builder.this.getFieldValue(feignClientFactoryBean, "name");
+                        beanName = (String) ShenXiuSentinelFeign.Builder.this.getFieldValue(feignClientFactoryBean, "name");
                     }
 
                     if (Void.TYPE != fallback) {
@@ -106,7 +96,7 @@ public final class ShenXiuSentinelFeign {
                 }
 
                 private Object getFromContext(String name, String type, Class fallbackType, Class targetType) {
-                    Object fallbackInstance = Builder.this.feignContext.getInstance(name, fallbackType);
+                    Object fallbackInstance = ShenXiuSentinelFeign.Builder.this.feignContext.getInstance(name, fallbackType);
                     if (fallbackInstance == null) {
                         throw new IllegalStateException(String.format("No %s instance of type %s found for feign client %s", type, fallbackType, name));
                     } else if (!targetType.isAssignableFrom(fallbackType)) {

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * web层通用数据处理
  * 
- * @author Shenxiu 
- * @date 2022/11/3 17:27
+ * @author ShenXiu
+ * @version 2022/11/3 17:27
  */
 @Slf4j
 public class BaseController {

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--<parent>
-        <artifactId>shenxiu-common</artifactId>
-        <groupId>site.shenxiu</groupId>
-        <version>0.0.1</version>
-    </parent>-->
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>site.shenxiu</groupId>
     <artifactId>shenxiu-common-alibaba-bom</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
     <description>
         shenxiu-common-alibaba-bom alibaba依赖项
     </description>
+
     <properties>
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>

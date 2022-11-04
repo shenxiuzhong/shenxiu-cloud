@@ -1,16 +1,3 @@
-/*
- * Copyright 2012-2022 The Feign Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
 package site.shenxiu.common.feign;
 
 import com.alibaba.cloud.sentinel.feign.SentinelContractHolder;
@@ -21,7 +8,7 @@ import com.alibaba.csp.sentinel.Tracer;
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import feign.Feign;
-import feign.InvocationHandlerFactory.MethodHandler;
+import feign.InvocationHandlerFactory;
 import feign.MethodMetadata;
 import feign.Target;
 import org.springframework.cloud.openfeign.FallbackFactory;
@@ -36,30 +23,30 @@ import java.util.Map;
 import static feign.Util.checkNotNull;
 
 /**
- * sentinel handle invocation that protected by ShenXiu
+ * shenxiu sentinel handle invocation
  *
- * @author zxx
- * @date2022/8/15 17:28
+ * @author ShenXiu
+ * @version 2022/11/4 11:11
  */
-final class ShenXiuSentinelInvocationHandler implements InvocationHandler {
+public class ShenXiuSentinelInvocationHandler implements InvocationHandler {
 
     private final Target<?> target;
 
-    private final Map<Method, MethodHandler> dispatch;
+    private final Map<Method, InvocationHandlerFactory.MethodHandler> dispatch;
 
     private FallbackFactory fallbackFactory;
 
     private Map<Method, Method> fallbackMethodMap;
 
-    ShenXiuSentinelInvocationHandler(Target<?> target, Map<Method, MethodHandler> dispatch,
-                                     FallbackFactory fallbackFactory) {
+    ShenXiuSentinelInvocationHandler(Target<?> target, Map<Method, InvocationHandlerFactory.MethodHandler> dispatch,
+                                 FallbackFactory fallbackFactory) {
         this.target = checkNotNull(target, "target");
         this.dispatch = checkNotNull(dispatch, "dispatch");
         this.fallbackFactory = fallbackFactory;
         this.fallbackMethodMap = toFallbackMethod(dispatch);
     }
 
-    ShenXiuSentinelInvocationHandler(Target<?> target, Map<Method, MethodHandler> dispatch) {
+    ShenXiuSentinelInvocationHandler(Target<?> target, Map<Method, InvocationHandlerFactory.MethodHandler> dispatch) {
         this.target = checkNotNull(target, "target");
         this.dispatch = checkNotNull(dispatch, "dispatch");
     }
@@ -86,7 +73,7 @@ final class ShenXiuSentinelInvocationHandler implements InvocationHandler {
         }
 
         Object result;
-        MethodHandler methodHandler = this.dispatch.get(method);
+        InvocationHandlerFactory.MethodHandler methodHandler = this.dispatch.get(method);
         // only handle by HardCodedTarget
         if (target instanceof Target.HardCodedTarget) {
             Target.HardCodedTarget hardCodedTarget = (Target.HardCodedTarget) target;
@@ -166,7 +153,7 @@ final class ShenXiuSentinelInvocationHandler implements InvocationHandler {
         return target.toString();
     }
 
-    static Map<Method, Method> toFallbackMethod(Map<Method, MethodHandler> dispatch) {
+    static Map<Method, Method> toFallbackMethod(Map<Method, InvocationHandlerFactory.MethodHandler> dispatch) {
         Map<Method, Method> result = new LinkedHashMap<>();
         for (Method method : dispatch.keySet()) {
             method.setAccessible(true);
