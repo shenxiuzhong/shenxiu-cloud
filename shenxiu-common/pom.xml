@@ -20,6 +20,7 @@
         <module>shenxiu-common-core</module>
         <module>shenxiu-common-feign</module>
         <module>shenxiu-common-alibaba-bom</module>
+        <module>shenxiu-common-loadbalancer</module>
     </modules>
 
 </project>
