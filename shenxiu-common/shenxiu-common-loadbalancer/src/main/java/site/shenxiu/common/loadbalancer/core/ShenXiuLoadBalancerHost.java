@@ -2,7 +2,6 @@ package site.shenxiu.common.loadbalancer.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -13,7 +12,6 @@ import java.net.UnknownHostException;
  * @version 2022/11/6 21:30
  */
 @Slf4j
-@Configuration
 public class ShenXiuLoadBalancerHost {
     /**
      * 本地host地址
