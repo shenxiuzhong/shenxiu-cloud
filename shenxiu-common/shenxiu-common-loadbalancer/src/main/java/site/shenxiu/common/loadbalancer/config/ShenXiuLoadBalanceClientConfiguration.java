@@ -9,7 +9,7 @@ import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import site.shenxiu.common.loadbalancer.core.ShenXiuLoadBalancerHost;
+import site.shenxiu.common.loadbalancer.core.ShenXiuLoadBalancerInstance;
 import site.shenxiu.common.loadbalancer.core.ShenXiuLoadBalancer;
 
 /**
@@ -27,11 +27,11 @@ public class ShenXiuLoadBalanceClientConfiguration {
     @ConditionalOnProperty(name = "shenxiu.loadbalance.enabled")
     public ReactorLoadBalancer<ServiceInstance> shenXiuLoadBalancer(Environment environment,
                                                                     LoadBalancerClientFactory loadBalancerClientFactory,
-                                                                    ShenXiuLoadBalancerHost shenXiuLoadBalancerHost) {
+                                                                    ShenXiuLoadBalancerInstance shenXiuLoadBalancerInstance) {
         String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
         return new ShenXiuLoadBalancer(
                 loadBalancerClientFactory.getLazyProvider(name,
                         ServiceInstanceListSupplier.class),
-                name, shenXiuLoadBalancerHost);
+                name, shenXiuLoadBalancerInstance);
     }
 }

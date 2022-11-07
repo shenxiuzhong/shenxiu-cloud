@@ -29,14 +29,14 @@ public class ShenXiuLoadBalancer implements ReactorServiceInstanceLoadBalancer {
 
     private final ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
 
-    private final ShenXiuLoadBalancerHost shenXiuLoadBalancerHost;
+    private final ShenXiuLoadBalancerInstance shenXiuLoadBalancerInstance;
 
     public ShenXiuLoadBalancer(
             ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider,
-            String serviceId, ShenXiuLoadBalancerHost shenXiuLoadBalancerHost) {
+            String serviceId, ShenXiuLoadBalancerInstance shenXiuLoadBalancerInstance) {
         this.serviceId = serviceId;
         this.serviceInstanceListSupplierProvider = serviceInstanceListSupplierProvider;
-        this.shenXiuLoadBalancerHost = shenXiuLoadBalancerHost;
+        this.shenXiuLoadBalancerInstance = shenXiuLoadBalancerInstance;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ShenXiuLoadBalancer implements ReactorServiceInstanceLoadBalancer {
             return new EmptyResponse();
         }
         for (ServiceInstance instance : instances) {
-            if (instance.getHost().equals(this.shenXiuLoadBalancerHost.getHost())) {
+            if (instance.getHost().equals(this.shenXiuLoadBalancerInstance.getHost())) {
                 return new DefaultResponse(instance);
             }
         }
