@@ -21,6 +21,9 @@
         <module>shenxiu-common-feign</module>
         <module>shenxiu-common-alibaba-bom</module>
         <module>shenxiu-common-loadbalancer</module>
+        <module>shenxiu-common-idempotent</module>
+        <module>shenxiu-common-redis</module>
+        <module>shenxiu-common-bom</module>
     </modules>
 
 </project>

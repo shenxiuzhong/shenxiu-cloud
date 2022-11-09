@@ -127,22 +127,22 @@
             </dependency>
 
             <!-- common 的依赖配置-->
-            <!--<dependency>
+            <dependency>
                 <groupId>site.shenxiu</groupId>
                 <artifactId>shenxiu-common-bom</artifactId>
                 <version>${shenxiu.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>-->
+            </dependency>
 
             <!-- api 的依赖配置-->
-            <!--<dependency>
+            <dependency>
                 <groupId>site.shenxiu</groupId>
                 <artifactId>shenxiu-definition-bom</artifactId>
                 <version>${shenxiu.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>-->
+            </dependency>
 
             <dependency>
                 <groupId>cn.dev33</groupId>
@@ -289,7 +289,7 @@
         <module>shenxiu-common</module>
         <module>shenxiu-auth</module>
         <module>shenxiu-gateway</module>
-        <module>shenxiu-definition</module>
+        <module>shenxiu-definition-bom</module>
         <module>shenxiu-modules</module>
     </modules>
     <packaging>pom</packaging>

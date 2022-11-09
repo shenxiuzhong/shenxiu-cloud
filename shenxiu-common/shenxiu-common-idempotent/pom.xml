@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>shenxiu-common</artifactId>
+        <groupId>site.shenxiu</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>shenxiu-common-idempotent</artifactId>
+
+
+    <description>
+        shenxiu-common-idempotent 幂等功能
+    </description>
+
+    <dependencies>
+
+        <!-- SpringBoot core -->
+        <dependency>
+            <groupId>site.shenxiu</groupId>
+            <artifactId>shenxiu-common-core</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+       <!-- <dependency>
+            <groupId>com.zsx</groupId>
+            <artifactId>zsx-common-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-crypto</artifactId>
+        </dependency>-->
+
+    </dependencies>
+
+</project>
