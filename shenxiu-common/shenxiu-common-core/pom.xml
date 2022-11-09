@@ -102,10 +102,16 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--hutool-core-->
+        <!--hutool 工具-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-extra</artifactId>
             <scope>compile</scope>
         </dependency>
     </dependencies>
