@@ -15,5 +15,8 @@
     <description>
         shenxiu-modules 业务模块
     </description>
+    <modules>
+        <module>shenxiu-system</module>
+    </modules>
 
 </project>

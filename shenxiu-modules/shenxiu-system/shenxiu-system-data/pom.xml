@@ -3,17 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shenxiu-cloud</artifactId>
-        <groupId>site.shenxiu</groupId>
+        <artifactId>shenxiu-system</artifactId>
+        <groupId>site.shenxiu.system</groupId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>site.shenxiu.gateway</groupId>
-    <artifactId>shenxiu-gateway</artifactId>
+    <groupId>site.shenxiu.system.data</groupId>
+    <artifactId>shenxiu-system-data</artifactId>
 
-    <description>
-        shenxiu-gateway 网关模块
-    </description>
 
 </project>

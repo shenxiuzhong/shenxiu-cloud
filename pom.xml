@@ -137,7 +137,7 @@
 
             <!-- api 的依赖配置-->
             <dependency>
-                <groupId>site.shenxiu</groupId>
+                <groupId>site.shenxiu.definition</groupId>
                 <artifactId>shenxiu-definition-bom</artifactId>
                 <version>${shenxiu.version}</version>
                 <type>pom</type>
