@@ -12,5 +12,12 @@
     <groupId>site.shenxiu.system.data</groupId>
     <artifactId>shenxiu-system-data</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>site.shenxiu.common</groupId>
+            <artifactId>shenxiu-common-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
 
 </project>
