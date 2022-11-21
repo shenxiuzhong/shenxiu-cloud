@@ -1,4 +1,4 @@
-package com.zsx.system.definition.domain;
+package site.shenxiu.system.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,7 +21,6 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @TableName("sys_dict_data")
-//@ApiModel("字典数据业务对象")
 public class SysDictData extends BaseEntity {
 
     /**
