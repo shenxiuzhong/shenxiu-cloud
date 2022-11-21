@@ -11,6 +11,7 @@
 
     <groupId>site.shenxiu.system.data</groupId>
     <artifactId>shenxiu-system-data</artifactId>
+    <description>shenxiu-system-data 基础服务数据实体定义模块</description>
 
     <dependencies>
         <dependency>
