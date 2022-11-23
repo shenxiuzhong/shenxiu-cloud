@@ -1,5 +1,6 @@
 package site.shenxiu.system.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
@@ -38,17 +39,26 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public SysConfig selectConfigById(Long configId) {
-        return null;
+        return baseMapper.selectById(configId);
     }
 
     @Override
     public String selectConfigByKey(String configKey) {
-        return null;
+        SysConfig retConfig = baseMapper.selectOne(new LambdaQueryWrapper<SysConfig>()
+                .eq(SysConfig::getConfigKey, configKey));
+        if (ObjectUtil.isNotNull(retConfig)) {
+            return retConfig.getConfigValue();
+        }
+        return StringUtils.EMPTY;
     }
 
     @Override
     public List<SysConfig> selectConfigList(SysConfig config) {
-        return null;
+        LambdaQueryWrapper<SysConfig> lqw = new LambdaQueryWrapper<SysConfig>()
+                .like(StringUtils.isNotBlank(config.getConfigName()), SysConfig::getConfigName, config.getConfigName())
+                .eq(StringUtils.isNotBlank(config.getConfigType()), SysConfig::getConfigType, config.getConfigType())
+                .like(StringUtils.isNotBlank(config.getConfigKey()), SysConfig::getConfigKey, config.getConfigKey());
+        return baseMapper.selectList(lqw);
     }
 
     @Override
