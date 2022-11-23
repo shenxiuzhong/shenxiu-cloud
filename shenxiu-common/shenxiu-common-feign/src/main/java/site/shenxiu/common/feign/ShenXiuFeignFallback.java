@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 import site.shenxiu.common.core.constant.HttpStatus;
-import site.shenxiu.common.core.doman.R;
+import site.shenxiu.common.core.domain.R;
 
 import java.lang.reflect.Method;
 import java.util.Objects;

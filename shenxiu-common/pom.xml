@@ -25,6 +25,7 @@
         <module>shenxiu-common-idempotent</module>
         <module>shenxiu-common-redis</module>
         <module>shenxiu-common-bom</module>
+        <module>shenxiu-common-mybatis</module>
     </modules>
 
 </project>

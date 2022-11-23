@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>site.shenxiu.common</groupId>
                 <artifactId>shenxiu-common-core</artifactId>
-                <version>0.0.1</version>
+                <version>${project.version}</version>
             </dependency>
 
             <!-- 安全模块 -->
@@ -61,14 +61,14 @@
             <dependency>
                 <groupId>site.shenxiu.common</groupId>
                 <artifactId>shenxiu-common-redis</artifactId>
-                <version>0.0.1</version>
+                <version>${project.version}</version>
             </dependency>
 
             <!--open feign-->
             <dependency>
                 <groupId>site.shenxiu.common</groupId>
                 <artifactId>shenxiu-common-feign</artifactId>
-                <version>0.0.1</version>
+                <version>${project.version}</version>
             </dependency>
 
             <!-- web服务 -->
@@ -78,12 +78,12 @@
                 <version>${project.version}</version>
             </dependency>-->
 
-            <!-- 数据库服务 -->
-            <!-- <dependency>
-                 <groupId>site.shenxiu</groupId>
+            <!-- 数据服务 -->
+             <dependency>
+                 <groupId>site.shenxiu.common</groupId>
                  <artifactId>shenxiu-common-mybatis</artifactId>
                  <version>${project.version}</version>
-             </dependency>-->
+             </dependency>
 
             <!--<dependency>
                 <groupId>site.shenxiu</groupId>
@@ -101,7 +101,7 @@
             <dependency>
                 <groupId>site.shenxiu.common</groupId>
                 <artifactId>shenxiu-common-loadbalancer</artifactId>
-                <version>0.0.1</version>
+                <version>${project.version}</version>
             </dependency>
 
             <!--  <dependency>
@@ -113,7 +113,7 @@
             <dependency>
                 <groupId>site.shenxiu.common</groupId>
                 <artifactId>shenxiu-common-idempotent</artifactId>
-                <version>0.0.1</version>
+                <version>${project.version}</version>
             </dependency>
 
             <!--<dependency>
