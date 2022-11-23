@@ -33,7 +33,7 @@
         </dependency>
 
         <dependency>
-            <groupId>site.shenxiu</groupId>
+            <groupId>site.shenxiu.common</groupId>
             <artifactId>shenxiu-common-core</artifactId>
             <scope>compile</scope>
             <optional>true</optional>

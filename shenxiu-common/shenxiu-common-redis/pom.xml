@@ -40,7 +40,7 @@
 
         <!-- ShenXiu Common Core-->
         <dependency>
-            <groupId>site.shenxiu</groupId>
+            <groupId>site.shenxiu.common</groupId>
             <artifactId>shenxiu-common-core</artifactId>
         </dependency>
 
