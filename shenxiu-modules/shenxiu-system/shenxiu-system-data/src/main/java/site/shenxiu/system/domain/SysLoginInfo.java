@@ -22,8 +22,6 @@ import java.util.Date;
 @TableName("sys_login_info")
 public class SysLoginInfo extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
     /**
      * ID
      */

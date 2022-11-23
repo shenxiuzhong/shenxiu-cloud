@@ -1,9 +1,9 @@
 package site.shenxiu.system.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import site.shenxiu.common.core.web.domain.BaseEntity;
 
 /**
  * 当前在线会话
@@ -12,9 +12,10 @@ import java.io.Serializable;
  * @version 2022/11/16 16:40
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-public class SysUserOnline implements Serializable {
+public class SysUserOnline extends BaseEntity {
 
     /**
      * 会话编号

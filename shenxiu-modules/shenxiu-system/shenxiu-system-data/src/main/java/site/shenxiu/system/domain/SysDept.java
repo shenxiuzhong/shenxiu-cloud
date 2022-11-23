@@ -24,7 +24,6 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @TableName("sys_dept")
 public class SysDept extends BaseEntity {
-    private static final long serialVersionUID = 1L;
 
     /**
      * 部门ID
