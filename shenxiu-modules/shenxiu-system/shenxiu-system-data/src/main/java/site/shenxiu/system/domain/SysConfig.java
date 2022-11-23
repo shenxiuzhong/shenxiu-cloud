@@ -11,18 +11,16 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 /**
- * 参数配置表 sys_config
+ * 参数配置表
  *
  * @author ShenXiu
- * @version 2022/11/16 13:35
+ * @version 2022/11/23 15:59
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@TableName("sys_config")
+@TableName(value ="sys_config")
 public class SysConfig extends BaseEntity {
-
     /**
      * 参数主键
      */

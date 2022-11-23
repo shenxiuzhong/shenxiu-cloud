@@ -12,4 +12,16 @@
     <groupId>site.shenxiu.system.api</groupId>
     <artifactId>shenxiu-system-api</artifactId>
     <description>shenxiu-system-api 基础服务api定义模块</description>
+    <dependencies>
+        <dependency>
+            <groupId>site.shenxiu.common</groupId>
+            <artifactId>shenxiu-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>site.shenxiu.system.data</groupId>
+            <artifactId>shenxiu-system-data</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
