@@ -114,6 +114,12 @@
             <artifactId>hutool-extra</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>3.5.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

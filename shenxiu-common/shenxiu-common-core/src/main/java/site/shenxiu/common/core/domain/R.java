@@ -1,4 +1,4 @@
-package site.shenxiu.common.core.doman;
+package site.shenxiu.common.core.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

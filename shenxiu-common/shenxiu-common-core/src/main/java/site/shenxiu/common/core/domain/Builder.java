@@ -1,4 +1,4 @@
-package site.shenxiu.common.core.doman;
+package site.shenxiu.common.core.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.function.Supplier;
 
 /**
  * 通用的 Builder 模式构建器
- * 
- * @author ShenXiu 
+ *
+ * @author ShenXiu
  * @version 2022/11/4 14:06
  */
 public class Builder<T> {
