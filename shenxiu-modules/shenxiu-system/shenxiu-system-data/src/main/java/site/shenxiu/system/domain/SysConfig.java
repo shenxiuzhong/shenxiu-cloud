@@ -53,6 +53,11 @@ public class SysConfig extends BaseEntity {
     private String configType;
 
     /**
+     * 系统内置（Y是 N否）
+     */
+    private Integer deleted;
+
+    /**
      * 备注
      */
     private String remark;

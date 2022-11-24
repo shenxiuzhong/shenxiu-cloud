@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import site.shenxiu.common.core.constant.SystemConstants;
+import site.shenxiu.common.core.exception.BusinessException;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.common.mybatis.pagination.PageUtils;
@@ -13,6 +15,7 @@ import site.shenxiu.system.domain.SysConfig;
 import site.shenxiu.system.mapper.SysConfigMapper;
 import site.shenxiu.system.service.SysConfigService;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -63,17 +66,29 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public String insertConfig(SysConfig config) {
+        baseMapper.insert(config);
         return null;
     }
 
     @Override
     public String updateConfig(SysConfig config) {
+        if (config.getConfigId() != null) {
+            baseMapper.updateById(config);
+        } else {
+            baseMapper.update(config, new LambdaQueryWrapper<SysConfig>().eq(SysConfig::getConfigKey, config.getConfigKey()));
+        }
         return null;
     }
 
     @Override
     public void deleteConfigByIds(Long[] configIds) {
-
+        for (Long configId : configIds) {
+            SysConfig config = selectConfigById(configId);
+            if (StringUtils.equals(SystemConstants.YES, config.getConfigType())) {
+                throw new BusinessException(String.format("内置参数【%1$s】不能删除 ", config.getConfigKey()));
+            }
+        }
+        baseMapper.deleteBatchIds(Arrays.asList(configIds));
     }
 
     @Override
@@ -93,7 +108,12 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public String checkConfigKeyUnique(SysConfig config) {
-        return null;
+        Long configId = ObjectUtil.isNull(config.getConfigId()) ? -1L : config.getConfigId();
+        SysConfig info = baseMapper.selectOne(new LambdaQueryWrapper<SysConfig>().eq(SysConfig::getConfigKey, config.getConfigKey()));
+        if (ObjectUtil.isNotNull(info) && info.getConfigId().longValue() != configId.longValue()) {
+            return SystemConstants.NOT_UNIQUE;
+        }
+        return SystemConstants.UNIQUE;
     }
 }
 

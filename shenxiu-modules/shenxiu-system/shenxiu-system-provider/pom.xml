@@ -12,6 +12,11 @@
     <artifactId>shenxiu-system-provider</artifactId>
 
     <dependencies>
+        <!-- SpringBoot Web容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <!-- SpringCloud Alibaba Nacos -->
         <dependency>
@@ -38,15 +43,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>site.shenxiu.common</groupId>
-            <artifactId>shenxiu-common-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>site.shenxiu.system.data</groupId>
             <artifactId>shenxiu-system-data</artifactId>
             <version>0.0.1</version>
@@ -55,6 +51,12 @@
         <dependency>
             <groupId>site.shenxiu.common</groupId>
             <artifactId>shenxiu-common-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>site.shenxiu.system.api</groupId>
+            <artifactId>shenxiu-system-api</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

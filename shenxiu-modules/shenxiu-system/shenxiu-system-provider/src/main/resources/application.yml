@@ -1,0 +1,111 @@
+# Tomcat
+server:
+  port: 9901
+
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: shenxiu-system
+  profiles:
+    # 环境配置
+    active: @profiles.active@
+
+--- # nacos 配置
+spring:
+  cloud:
+    nacos:
+      # nacos 服务地址
+      server-addr: @nacos.server@
+      discovery:
+        # 注册组
+        group: @nacos.discovery.group@
+        namespace: ${spring.profiles.active}
+      config:
+        # 配置组
+        group: @nacos.config.group@
+        namespace: ${spring.profiles.active}
+#  config:
+#    import:
+#      - optional:nacos:application-common.yml
+#      - optional:nacos:datasource.yml
+#      - optional:nacos:${spring.application.name}.yml
+  datasource:
+    # 连接池的配置
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://10.10.10.20:3306/shenxiu_cloud_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    hikari:
+      username: root
+      password: shenxiu_123
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-test-query: SELECT 1
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      pool-name: ShenXiuSystemHikariCP
+    # 动态数据源文档 https://www.kancloud.cn/tracy5546/dynamic-datasource/content
+#    dynamic:
+#      # 性能分析插件(有性能损耗 不建议生产环境使用)
+#      p6spy: true
+#      # 开启seata代理，开启后默认每个数据源都代理，如果某个不需要代理可单独关闭
+#      #seata: true
+#      # 严格模式 匹配不到数据源则报错
+#      strict: true
+#      druid:
+#        initial-size: 5
+#        min-idle: 5
+#        maxActive: 20
+#        maxWait: 60000
+#        timeBetweenEvictionRunsMillis: 60000
+#        minEvictableIdleTimeMillis: 300000
+#        validationQuery: SELECT 1 FROM DUAL
+#        testWhileIdle: true
+#        testOnBorrow: false
+#        testOnReturn: false
+#        poolPreparedStatements: true
+#        maxPoolPreparedStatementPerConnectionSize: 20
+#        filters: stat,slf4j
+#        connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+
+# MyBatisPlus配置
+# https://baomidou.com/config/
+mybatis-plus:
+  # 不支持多包, 如有需要可在注解配置 或 提升扫包等级
+  # 例如 com.**.**.mapper
+  mapperPackage: site.shenxiu.**.mapper
+  # 对应的 XML 文件位置
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: site.shenxiu.**.domain
+  # 启动时是否检查 MyBatis XML 文件的存在，默认不检查
+  checkConfigLocation: false
+  configuration:
+    # 自动驼峰命名规则（camel case）映射
+    mapUnderscoreToCamelCase: true
+    # MyBatis 自动映射策略
+    # NONE：不启用 PARTIAL：只对非嵌套 resultMap 自动映射 FULL：对所有 resultMap 自动映射
+    autoMappingBehavior: PARTIAL
+    # MyBatis 自动映射时未知列或未知属性处理策
+    # NONE：不做处理 WARNING：打印相关警告 FAILING：抛出异常和详细信息
+    autoMappingUnknownColumnBehavior: NONE
+    # 更详细的日志输出 会有性能损耗 org.apache.ibatis.logging.stdout.StdOutImpl
+    # 关闭日志记录 (可单纯使用 p6spy 分析) org.apache.ibatis.logging.nologging.NoLoggingImpl
+    # 默认日志输出 org.apache.ibatis.logging.slf4j.Slf4jImpl
+    logImpl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+  global-config:
+    # 是否打印 Logo banner
+    banner: true
+    dbConfig:
+      # 主键类型
+      # AUTO 自增 ,NONE 空, INPUT 用户输入, ASSIGN_ID 雪花 ,ASSIGN_UUID 唯一 UUID
+      idType: ASSIGN_ID
+      # 逻辑删除键
+      logic-delete-field: deleted
+      # 逻辑已删除值
+      logicDeleteValue: 1
+      # 逻辑未删除值
+      logicNotDeleteValue: 0
+      insertStrategy: NOT_NULL
+      updateStrategy: NOT_NULL
+      where-strategy: NOT_NULL
