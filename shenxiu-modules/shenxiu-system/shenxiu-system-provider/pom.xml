@@ -59,4 +59,28 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <!--引入smart-doc-->
+            <plugin>
+                <groupId>site.shenxiu.smartdoc</groupId>
+                <artifactId>shenxiu-smart-doc-maven-plugin</artifactId>
+                <version>2.6.2</version>
+                <configuration>
+                    <includes>
+                        <!--格式为：groupId:artifactId;参考如下-->
+                        <!--也可以支持正则式如：com.alibaba:.* -->
+                        <!--<include>com.power.doc:.*</include>-->
+                        <!--            <include>com.baomidou:mybatis-plus-extension</include>-->
+                        <!--            <include>com.github.shalousun:.*</include>-->
+                        <!--            <include>org.springframework:spring-web</include>-->
+                    </includes>
+                    <!--指定生成文档的使用的配置文件-->
+                    <configFile>./src/main/resources/smart-doc.json</configFile>
+                    <!--指定项目名称-->
+                    <projectName>神秀云基础模块</projectName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

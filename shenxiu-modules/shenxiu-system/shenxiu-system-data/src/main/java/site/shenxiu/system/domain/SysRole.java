@@ -73,10 +73,10 @@ public class SysRole extends BaseEntity {
     private String status;
 
     /**
-     * 删除标志（0代表存在 2代表删除）
+     * 删除标志（0代表存在 1代表删除）
      */
     @TableLogic
-    private String delFlag;
+    private Integer deleted;
 
     /**
      * 备注
@@ -100,6 +100,8 @@ public class SysRole extends BaseEntity {
      */
     @TableField(exist = false)
     private Long[] deptIds;
+
+
 
     public SysRole(Long roleId) {
         this.roleId = roleId;

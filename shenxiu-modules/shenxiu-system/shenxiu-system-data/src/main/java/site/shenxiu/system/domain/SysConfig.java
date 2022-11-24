@@ -1,6 +1,7 @@
 package site.shenxiu.system.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -53,8 +54,9 @@ public class SysConfig extends BaseEntity {
     private String configType;
 
     /**
-     * 系统内置（Y是 N否）
+     * 删除状态（1是 0否）
      */
+    @TableLogic
     private Integer deleted;
 
     /**

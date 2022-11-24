@@ -131,7 +131,7 @@ public class SysUser extends BaseEntity {
      * 部门对象
      */
     @TableField(exist = false)
-    private com.zsx.system.definition.domain.SysDept dept;
+    private SysDept dept;
 
     /**
      * 角色对象

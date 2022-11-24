@@ -2,14 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="site.shenxiu.system.mapper.SysConfigMapper">
+<mapper namespace="site.shenxiu.system.mapper.SysNoticeMapper">
 
-    <resultMap id="SysConfigResultMap" type="site.shenxiu.system.domain.SysConfig">
-            <id property="configId" column="config_id" jdbcType="BIGINT"/>
-            <result property="configName" column="config_name" jdbcType="VARCHAR"/>
-            <result property="configKey" column="config_key" jdbcType="VARCHAR"/>
-            <result property="configValue" column="config_value" jdbcType="VARCHAR"/>
-            <result property="configType" column="config_type" jdbcType="CHAR"/>
+    <resultMap id="SysNoticeResultMap" type="site.shenxiu.system.domain.SysNotice">
+            <id property="noticeId" column="notice_id" jdbcType="BIGINT"/>
+            <result property="noticeTitle" column="notice_title" jdbcType="VARCHAR"/>
+            <result property="noticeType" column="notice_type" jdbcType="CHAR"/>
+            <result property="status" column="status" jdbcType="CHAR"/>
             <result property="deleted" column="deleted" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
@@ -19,9 +18,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        config_id,config_name,config_key,
-        config_value,config_type,deleted,create_by,
+        notice_id,notice_title,notice_type,
+        status,deleted,create_by,
         create_time,update_by,update_time,
-        remark
+        remark,notice_content
     </sql>
 </mapper>

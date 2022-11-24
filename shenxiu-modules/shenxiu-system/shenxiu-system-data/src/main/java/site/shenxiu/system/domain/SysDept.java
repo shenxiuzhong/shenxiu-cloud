@@ -1,4 +1,4 @@
-package com.zsx.system.definition.domain;
+package site.shenxiu.system.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
@@ -26,10 +26,20 @@ import javax.validation.constraints.Size;
 public class SysDept extends BaseEntity {
 
     /**
-     * 部门ID
+     * 部门id
      */
     @TableId(value = "dept_id")
     private Long deptId;
+
+    /**
+     * 父部门id
+     */
+    private Long parentId;
+
+    /**
+     * 祖级列表
+     */
+    private String ancestors;
 
     /**
      * 部门名称
@@ -37,11 +47,6 @@ public class SysDept extends BaseEntity {
     @NotBlank(message = "部门名称不能为空")
     @Size(min = 0, max = 30, message = "部门名称长度不能超过30个字符")
     private String deptName;
-
-    /**
-     * 父级ID
-     */
-    private Long parentId;
 
     /**
      * 显示顺序
@@ -68,19 +73,15 @@ public class SysDept extends BaseEntity {
     private String email;
 
     /**
-     * 部门状态:0正常,1停用
+     * 部门状态（0正常 1停用）
      */
     private String status;
 
     /**
-     * 删除标志（0代表存在 2代表删除）
+     * 删除标志（0代表存在 1代表删除）
      */
     @TableLogic
-    private String delFlag;
+    private Integer deleted;
 
-    /**
-     * 祖级列表
-     */
-    private String ancestors;
 
 }

@@ -1,0 +1,10 @@
+package site.shenxiu.system.service;
+
+/**
+* 针对表【sys_role_menu(角色和菜单关联表)】的数据库操作Service
+* @author ShenXiu
+* @version 2022-11-24 15:16:25
+*/
+public interface SysRoleMenuService{
+
+}
