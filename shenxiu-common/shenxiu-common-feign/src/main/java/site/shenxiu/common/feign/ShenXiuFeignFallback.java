@@ -1,7 +1,6 @@
 package site.shenxiu.common.feign;
 
 
-import com.sun.istack.internal.Nullable;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;
@@ -31,7 +30,6 @@ public class ShenXiuFeignFallback<T> implements MethodInterceptor {
         this.cause = cause;
     }
 
-    @Nullable
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         FeignException exception = (FeignException) cause;

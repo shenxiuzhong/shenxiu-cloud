@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Scope;
 
 /**
  * 自定义Feign熔断自动装配配置
- * <p> 替换SentinelFeign<p/>
+ * <p> 替换SentinelFeign
  * @author ShenXiu
  * @version 2022/11/4 11:13
  */
