@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.lang3.StringUtils;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
-import site.shenxiu.common.core.utils.SqlUtil;
+import site.shenxiu.common.core.utils.SqlUtils;
 
 /**
  * mybatis-plus 分页工具类
@@ -71,7 +71,7 @@ public class PageUtils {
             pageQuery.setIsAsc("desc");
         }
         if (StringUtils.isNotBlank(pageQuery.getOrderByColumn())) {
-            String orderBy = SqlUtil.escapeOrderBySql(pageQuery.getOrderByColumn());
+            String orderBy = SqlUtils.escapeOrderBySql(pageQuery.getOrderByColumn());
             orderBy = StrUtil.toUnderlineCase(orderBy);
             if ("asc".equals(pageQuery.getIsAsc())) {
                 return OrderItem.asc(orderBy);

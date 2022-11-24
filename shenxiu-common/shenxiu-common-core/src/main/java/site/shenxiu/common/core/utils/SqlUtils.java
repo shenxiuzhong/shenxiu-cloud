@@ -3,7 +3,7 @@ package site.shenxiu.common.core.utils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import site.shenxiu.common.core.exception.UtilException;
+import site.shenxiu.common.core.exception.BusinessException;
 
 /**
  * sql操作工具类
@@ -11,7 +11,7 @@ import site.shenxiu.common.core.exception.UtilException;
  * @author ruoyi
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class SqlUtil {
+public class SqlUtils {
 
     /**
      * 定义常用的 sql关键字
@@ -28,7 +28,7 @@ public class SqlUtil {
      */
     public static String escapeOrderBySql(String value) {
         if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value)) {
-            throw new UtilException("参数不符合规范，不能进行查询");
+            throw new BusinessException("参数不符合规范，不能进行查询");
         }
         return value;
     }
@@ -50,7 +50,7 @@ public class SqlUtil {
         String[] sqlKeywords = StringUtils.split(SQL_REGEX, "\\|");
         for (String sqlKeyword : sqlKeywords) {
             if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1) {
-                throw new UtilException("参数存在SQL注入风险");
+                throw new BusinessException("参数存在SQL注入风险");
             }
         }
     }
