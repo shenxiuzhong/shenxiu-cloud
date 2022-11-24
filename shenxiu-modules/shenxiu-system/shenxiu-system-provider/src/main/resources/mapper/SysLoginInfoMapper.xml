@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="site.shenxiu.system.mapper.SysLogininforMapper">
+<mapper namespace="site.shenxiu.system.mapper.SysLoginInfoMapper">
 
-    <resultMap id="SysLogininforResultMap" type="site.shenxiu.system.domain.SysLoginInfo">
+    <resultMap id="SysLoginInfoResultMap" type="site.shenxiu.system.domain.SysLoginInfo">
             <id property="infoId" column="info_id" jdbcType="BIGINT"/>
             <result property="userName" column="user_name" jdbcType="VARCHAR"/>
             <result property="ipaddr" column="ipaddr" jdbcType="VARCHAR"/>

@@ -5,8 +5,8 @@
 <mapper namespace="site.shenxiu.system.mapper.SysRoleDeptMapper">
 
     <resultMap id="SysRoleDeptResultMap" type="site.shenxiu.system.domain.SysRoleDept">
-            <id property="roleId" column="role_id" jdbcType="BIGINT"/>
-            <id property="deptId" column="dept_id" jdbcType="BIGINT"/>
+            <result property="roleId" column="role_id" jdbcType="BIGINT"/>
+            <result property="deptId" column="dept_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">

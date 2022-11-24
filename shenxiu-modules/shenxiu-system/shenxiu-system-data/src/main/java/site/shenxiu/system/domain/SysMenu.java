@@ -40,6 +40,11 @@ public class SysMenu extends BaseEntity {
     private String menuName;
 
     /**
+     * 父菜单id
+     */
+    private Long parentId;
+
+    /**
      * 显示顺序
      */
     @NotNull(message = "显示顺序不能为空")

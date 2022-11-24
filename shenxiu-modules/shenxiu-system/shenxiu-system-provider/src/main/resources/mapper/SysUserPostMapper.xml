@@ -5,8 +5,8 @@
 <mapper namespace="site.shenxiu.system.mapper.SysUserPostMapper">
 
     <resultMap id="SysUserPostResultMap" type="site.shenxiu.system.domain.SysUserPost">
-            <id property="userId" column="user_id" jdbcType="BIGINT"/>
-            <id property="postId" column="post_id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="postId" column="post_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">

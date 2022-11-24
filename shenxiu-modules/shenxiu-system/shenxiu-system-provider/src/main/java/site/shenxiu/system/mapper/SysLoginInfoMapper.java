@@ -8,7 +8,7 @@ import site.shenxiu.system.domain.SysLoginInfo;
 * @author ShenXiu
 * @version 2022-11-24 15:15:52
 */
-public interface SysLogininforMapper extends BaseMapper<SysLoginInfo> {
+public interface SysLoginInfoMapper extends BaseMapper<SysLoginInfo> {
 
 }
 
