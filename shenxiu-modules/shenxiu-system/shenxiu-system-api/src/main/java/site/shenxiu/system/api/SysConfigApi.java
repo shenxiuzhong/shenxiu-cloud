@@ -11,11 +11,11 @@ import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.system.domain.SysConfig;
 
 /**
- * 参数配置API接口定义
+ * 系统参数配置API定义
  *
  * @author ShenXiu
  * @version 2022/11/23 14:13
- * @definition api定义
+ * @definition 参数配置api定义
  */
 public interface SysConfigApi {
     /**

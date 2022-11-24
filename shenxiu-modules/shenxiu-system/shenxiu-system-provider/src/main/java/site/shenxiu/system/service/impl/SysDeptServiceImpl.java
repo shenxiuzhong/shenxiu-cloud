@@ -2,6 +2,7 @@ package site.shenxiu.system.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import site.shenxiu.system.mapper.SysDeptMapper;
 import site.shenxiu.system.service.SysDeptService;
 
 /**
@@ -12,7 +13,7 @@ import site.shenxiu.system.service.SysDeptService;
 @RequiredArgsConstructor
 @Service
 public class SysDeptServiceImpl implements SysDeptService{
-
+    private final SysDeptMapper baseMapper;
 }
 
 
