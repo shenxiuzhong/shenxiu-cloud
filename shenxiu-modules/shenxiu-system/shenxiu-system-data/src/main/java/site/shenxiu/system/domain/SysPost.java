@@ -68,10 +68,5 @@ public class SysPost extends BaseEntity {
     @TableField(exist = false)
     private boolean flag = false;
 
-    /**
-     * 删除标志（0代表存在 1代表删除）
-     */
-    @TableLogic
-    private Integer deleted;
 
 }

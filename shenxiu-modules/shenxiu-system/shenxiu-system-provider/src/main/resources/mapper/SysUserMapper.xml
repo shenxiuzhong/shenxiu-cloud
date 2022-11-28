@@ -16,7 +16,6 @@
             <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="CHAR"/>
-            <result property="deleted" column="deleted" jdbcType="INTEGER"/>
             <result property="loginIp" column="login_ip" jdbcType="VARCHAR"/>
             <result property="loginDate" column="login_date" jdbcType="TIMESTAMP"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
@@ -30,7 +29,7 @@
         user_id,dept_id,user_name,
         nick_name,user_type,email,
         phonenumber,sex,avatar,
-        password,status,deleted,
+        password,status,
         login_ip,login_date,create_by,
         create_time,update_by,update_time,
         remark

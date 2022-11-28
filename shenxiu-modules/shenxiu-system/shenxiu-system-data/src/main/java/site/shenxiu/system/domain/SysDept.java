@@ -1,7 +1,6 @@
 package site.shenxiu.system.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -77,11 +76,6 @@ public class SysDept extends BaseEntity {
      */
     private String status;
 
-    /**
-     * 删除标志（0代表存在 1代表删除）
-     */
-    @TableLogic
-    private Integer deleted;
 
 
 }

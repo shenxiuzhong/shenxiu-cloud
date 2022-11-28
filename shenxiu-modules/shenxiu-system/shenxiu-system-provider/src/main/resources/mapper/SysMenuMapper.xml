@@ -19,7 +19,6 @@
             <result property="status" column="status" jdbcType="CHAR"/>
             <result property="perms" column="perms" jdbcType="VARCHAR"/>
             <result property="icon" column="icon" jdbcType="VARCHAR"/>
-            <result property="deleted" column="deleted" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
@@ -32,7 +31,7 @@
         order_num,path,component,
         query_param,is_frame,is_cache,
         menu_type,visible,status,
-        perms,icon,deleted,
+        perms,icon,
         create_by,create_time,update_by,
         update_time,remark
     </sql>

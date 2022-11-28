@@ -32,18 +32,41 @@ spring:
 #      - optional:nacos:${spring.application.name}.yml
   datasource:
     # 连接池的配置
-    type: com.zaxxer.hikari.HikariDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://10.10.10.20:3306/shenxiu_cloud_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
-    hikari:
-      username: root
-      password: shenxiu_123
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      minimum-idle: 5
-      maximum-pool-size: 15
-      connection-test-query: SELECT 1
-      max-lifetime: 1800000
-      connection-timeout: 30000
-      pool-name: ShenXiuSystemHikariCP
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: shenxiu_123
+    druid:
+      initial-size: 5
+      min-idle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+      #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+      #则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j
+      filters: stat,wall
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#    hikari:
+#      username: root
+#      password: shenxiu_123
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      minimum-idle: 5
+#      maximum-pool-size: 15
+#      connection-test-query: SELECT 1
+#      max-lifetime: 1800000
+#      connection-timeout: 30000
+#      pool-name: ShenXiuSystemHikariCP
+
     # 动态数据源文档 https://www.kancloud.cn/tracy5546/dynamic-datasource/content
 #    dynamic:
 #      # 性能分析插件(有性能损耗 不建议生产环境使用)
@@ -103,9 +126,14 @@ mybatis-plus:
       # 逻辑删除键 在实体类中注解标识
       # logic-delete-field: deleted
       # 逻辑已删除值
-      logicDeleteValue: 1
+      #logicDeleteValue: 1
       # 逻辑未删除值
-      logicNotDeleteValue: 0
+      #logicNotDeleteValue: 0
       insertStrategy: NOT_NULL
       updateStrategy: NOT_NULL
       where-strategy: NOT_NULL
+
+shenxiu:
+  druid:
+    stat:
+      enabled: true

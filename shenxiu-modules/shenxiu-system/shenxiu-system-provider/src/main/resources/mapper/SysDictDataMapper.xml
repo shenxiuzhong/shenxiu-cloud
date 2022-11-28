@@ -14,7 +14,6 @@
             <result property="listClass" column="list_class" jdbcType="VARCHAR"/>
             <result property="isDefault" column="is_default" jdbcType="CHAR"/>
             <result property="status" column="status" jdbcType="CHAR"/>
-            <result property="deleted" column="deleted" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
@@ -26,7 +25,7 @@
         dict_code,dict_sort,dict_label,
         dict_value,dict_type,css_class,
         list_class,is_default,status,
-        deleted,create_by,create_time,
+        create_by,create_time,
         update_by,update_time,remark
     </sql>
 </mapper>

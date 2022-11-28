@@ -9,7 +9,6 @@
             <result property="dictName" column="dict_name" jdbcType="VARCHAR"/>
             <result property="dictType" column="dict_type" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="CHAR"/>
-            <result property="deleted" column="deleted" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
@@ -19,7 +18,7 @@
 
     <sql id="Base_Column_List">
         dict_id,dict_name,dict_type,
-        status,deleted,create_by,
+        status,create_by,
         create_time,update_by,update_time,
         remark
     </sql>
