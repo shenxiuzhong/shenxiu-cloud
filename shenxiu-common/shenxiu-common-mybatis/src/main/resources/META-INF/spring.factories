@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  site.shenxiu.common.mybatis.config.MybatisPlusConfiguration
+  site.shenxiu.common.mybatis.config.MybatisPlusConfiguration,\
+  site.shenxiu.common.mybatis.config.DruidConfiguration
 
