@@ -58,12 +58,18 @@ public class SysDeptServiceImpl implements SysDeptService{
 
     @Override
     public List<Long> selectDeptListByRoleId(Long roleId) {
+//        SysRole role = roleMapper.selectById(roleId);
+//        return baseMapper.selectDeptListByRoleId(roleId, role.getDeptCheckStrictly());
         return null;
     }
 
     @Override
     public SysDept selectDeptById(Long deptId) {
-        return null;
+        SysDept dept = baseMapper.selectById(deptId);
+        SysDept parentDept = baseMapper.selectOne(new LambdaQueryWrapper<SysDept>()
+                .select(SysDept::getDeptName).eq(SysDept::getDeptId, dept.getParentId()));
+        //dept.setParentName(ObjectUtil.isNotNull(parentDept) ? parentDept.getDeptName() : null);
+        return dept;
     }
 
     @Override

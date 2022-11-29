@@ -3,7 +3,7 @@ package site.shenxiu.system.domain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import site.shenxiu.common.core.web.domain.BaseEntity;
+import site.shenxiu.common.core.domain.BaseEntity;
 
 /**
  * 当前在线会话

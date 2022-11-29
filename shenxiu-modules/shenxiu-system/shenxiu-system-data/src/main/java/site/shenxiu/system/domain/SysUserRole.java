@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import site.shenxiu.common.core.web.domain.BaseEntity;
+import site.shenxiu.common.core.domain.BaseEntity;
 
 /**
  * 用户和角色关联 sys_user_role

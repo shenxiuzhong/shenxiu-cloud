@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import site.shenxiu.common.core.web.domain.BaseEntity;
+import site.shenxiu.common.core.domain.BaseEntity;
 import site.shenxiu.common.core.xss.Xss;
 
 import javax.validation.constraints.Email;
