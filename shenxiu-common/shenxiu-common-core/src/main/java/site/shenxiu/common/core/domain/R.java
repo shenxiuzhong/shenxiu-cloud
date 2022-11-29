@@ -45,6 +45,7 @@ public class R<T> implements Serializable {
     /**
      * 成功响应
      *
+     * @param <T> 泛型参数
      * @return 响应信息
      */
     public static <T> R<T> success() {
@@ -55,6 +56,7 @@ public class R<T> implements Serializable {
      * 成功响应
      *
      * @param data 数据对象
+     * @param <T>  泛型参数
      * @return 响应信息
      */
     public static <T> R<T> success(T data) {
@@ -65,6 +67,7 @@ public class R<T> implements Serializable {
      * 成功响应
      *
      * @param msg 消息内容
+     * @param <T> 泛型参数
      * @return 响应信息
      */
     public static <T> R<T> success(String msg) {
@@ -76,6 +79,7 @@ public class R<T> implements Serializable {
      *
      * @param msg  消息内容
      * @param data 数据对象
+     * @param <T>  泛型参数
      * @return 响应信息
      */
     public static <T> R<T> success(String msg, T data) {
@@ -85,6 +89,7 @@ public class R<T> implements Serializable {
     /**
      * 失败响应
      *
+     * @param <T> 泛型参数
      * @return 响应信息
      */
     public static <T> R<T> fail() {
@@ -95,6 +100,7 @@ public class R<T> implements Serializable {
      * 失败响应
      *
      * @param msg 消息内容
+     * @param <T> 泛型参数
      * @return 响应信息
      */
     public static <T> R<T> fail(String msg) {
@@ -106,6 +112,7 @@ public class R<T> implements Serializable {
      * 失败响应
      *
      * @param data 数据对象
+     * @param <T>  泛型参数
      * @return 响应信息
      */
     public static <T> R<T> fail(T data) {
@@ -117,6 +124,7 @@ public class R<T> implements Serializable {
      *
      * @param msg  消息内容
      * @param data 数据对象
+     * @param <T>  泛型参数
      * @return 响应信息
      */
     public static <T> R<T> fail(String msg, T data) {
@@ -128,12 +136,22 @@ public class R<T> implements Serializable {
      *
      * @param code 消息状态码
      * @param msg  消息内容
+     * @param <T>  泛型参数
      * @return 响应信息
      */
     public static <T> R<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
 
+    /**
+     * rest结果
+     *
+     * @param data 数据对象
+     * @param code 消息状态码
+     * @param msg  消息内容
+     * @param <T>  泛型参数
+     * @return R
+     */
     private static <T> R<T> restResult(T data, int code, String msg) {
         R<T> r = new R<>();
         r.setCode(code);
@@ -146,6 +164,7 @@ public class R<T> implements Serializable {
      * 响应返回结果
      *
      * @param rows 影响行数
+     * @param <T>  泛型参数
      * @return 操作结果
      */
     public static <T> R<T> toAjax(int rows) {
@@ -156,6 +175,7 @@ public class R<T> implements Serializable {
      * 响应返回结果
      *
      * @param result 结果
+     * @param <T>    泛型参数
      * @return 操作结果
      */
     public static <T> R<T> toAjax(boolean result) {

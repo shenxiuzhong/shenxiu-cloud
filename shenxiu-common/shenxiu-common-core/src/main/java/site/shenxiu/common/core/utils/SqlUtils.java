@@ -8,7 +8,8 @@ import site.shenxiu.common.core.exception.BusinessException;
 /**
  * sql操作工具类
  *
- * @author ruoyi
+ * @author ShenXiu
+ * @version 2022/11/29 17:23
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SqlUtils {
@@ -25,31 +26,39 @@ public class SqlUtils {
 
     /**
      * 检查字符，防止注入绕过
+     *
+     * @param sql sql
+     * @return sql
      */
-    public static String escapeOrderBySql(String value) {
-        if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value)) {
+    public static String escapeOrderBySql(String sql) {
+        if (StringUtils.isNotEmpty(sql) && !isValidOrderBySql(sql)) {
             throw new BusinessException("参数不符合规范，不能进行查询");
         }
-        return value;
+        return sql;
     }
 
     /**
      * 验证 order by 语法是否符合规范
+     *
+     * @param sql sql
+     * @return sql
      */
-    public static boolean isValidOrderBySql(String value) {
-        return value.matches(SQL_PATTERN);
+    public static boolean isValidOrderBySql(String sql) {
+        return sql.matches(SQL_PATTERN);
     }
 
     /**
      * SQL关键字检查
+     *
+     * @param sql sql
      */
-    public static void filterKeyword(String value) {
-        if (StringUtils.isEmpty(value)) {
+    public static void filterKeyword(String sql) {
+        if (StringUtils.isEmpty(sql)) {
             return;
         }
         String[] sqlKeywords = StringUtils.split(SQL_REGEX, "\\|");
         for (String sqlKeyword : sqlKeywords) {
-            if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1) {
+            if (StringUtils.indexOfIgnoreCase(sql, sqlKeyword) > -1) {
                 throw new BusinessException("参数存在SQL注入风险");
             }
         }
