@@ -1,4 +1,4 @@
-package site.shenxiu.common.core.web.controller;
+package site.shenxiu.common.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * web层通用数据处理
- * 
+ *
  * @author ShenXiu
  * @version 2022/11/3 17:27
  */

@@ -47,7 +47,7 @@ public class R<T> implements Serializable {
      *
      * @return 响应信息
      */
-    public static <T> R<T> ok() {
+    public static <T> R<T> success() {
         return restResult(null, SUCCESS, "操作成功");
     }
 
@@ -57,7 +57,7 @@ public class R<T> implements Serializable {
      * @param data 数据对象
      * @return 响应信息
      */
-    public static <T> R<T> ok(T data) {
+    public static <T> R<T> success(T data) {
         return restResult(data, SUCCESS, "操作成功");
     }
 
@@ -67,7 +67,7 @@ public class R<T> implements Serializable {
      * @param msg 消息内容
      * @return 响应信息
      */
-    public static <T> R<T> ok(String msg) {
+    public static <T> R<T> success(String msg) {
         return restResult(null, SUCCESS, msg);
     }
 
@@ -78,7 +78,7 @@ public class R<T> implements Serializable {
      * @param data 数据对象
      * @return 响应信息
      */
-    public static <T> R<T> ok(String msg, T data) {
+    public static <T> R<T> success(String msg, T data) {
         return restResult(data, SUCCESS, msg);
     }
 
@@ -149,7 +149,7 @@ public class R<T> implements Serializable {
      * @return 操作结果
      */
     public static <T> R<T> toAjax(int rows) {
-        return rows > 0 ? R.ok() : R.fail();
+        return rows > 0 ? R.success() : R.fail();
     }
 
     /**
@@ -159,7 +159,7 @@ public class R<T> implements Serializable {
      * @return 操作结果
      */
     public static <T> R<T> toAjax(boolean result) {
-        return result ? R.ok() : R.fail();
+        return result ? R.success() : R.fail();
     }
 
 }

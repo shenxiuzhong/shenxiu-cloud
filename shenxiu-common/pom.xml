@@ -26,6 +26,8 @@
         <module>shenxiu-common-redis</module>
         <module>shenxiu-common-bom</module>
         <module>shenxiu-common-mybatis</module>
+        <module>shenxiu-common-sa-token</module>
+        <module>shenxiu-common-web</module>
     </modules>
 
 </project>

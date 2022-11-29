@@ -1,4 +1,4 @@
-package site.shenxiu.common.core.web.domain;
+package site.shenxiu.common.core.domain;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
