@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: 'RuoYi-Cloud-Plus',
+      title: 'ShenXiu-Cloud',
       logo: logoImg
     }
   }
