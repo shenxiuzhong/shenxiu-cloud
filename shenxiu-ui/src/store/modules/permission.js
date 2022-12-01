@@ -52,44 +52,393 @@ const permission = {
     //临时路由
     TempGenerateRoutes({ commit }) {
       return new Promise(resolve => {
-        const sidebarRoutes = [
+        const data = [
+          {
+            'name': '6666',
+            'path': '/6666',
+            'hidden': false,
+            'redirect': 'noRedirect',
+            'component': 'Layout',
+            'alwaysShow': true,
+            'meta': {
+              'title': '傻逼菜单',
+              'icon': '404',
+              'noCache': false,
+              'link': null
+            },
+            'children': [
+              {
+                'name': '7777',
+                'path': '7777',
+                'hidden': false,
+                'component': '·1111',
+                'query': '121212',
+                'meta': {
+                  'title': '二级傻逼',
+                  'icon': 'bug',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Http://www.qq.com',
+                'path': 'http://www.qq.com',
+                'hidden': false,
+                'component': 'Layout',
+                'meta': {
+                  'title': '你是傻逼',
+                  'icon': 'clipboard',
+                  'noCache': false,
+                  'link': 'http://www.qq.com'
+                }
+              }
+            ]
+          },
           {
             'name': 'System',
             'path': '/system',
             'hidden': false,
             'redirect': 'noRedirect',
-            'component': Layout,
+            'component': 'Layout',
             'alwaysShow': true,
             'meta': {
-              'title': '网格管理',
-              'icon': 'iconfont verycloud-tudipinggu',
-              'outLink': null
+              'title': '系统管理',
+              'icon': 'system',
+              'noCache': false,
+              'link': null
             },
             'children': [
               {
-                path: 'index/:dictId(\\d+)',
-                component: () => import('@/views/system/dict/data'),
-                name: 'Data',
-                meta: { title: '字典数据', activeMenu: '/system/dict' }
+                'name': 'User',
+                'path': 'user',
+                'hidden': false,
+                'component': 'system/user/index',
+                'meta': {
+                  'title': '用户管理',
+                  'icon': 'user',
+                  'noCache': false,
+                  'link': null
+                }
               },
               {
-                path: 'index/:dictId(\\d+)',
-                component: () => import('@/views/system/dict/data'),
-                name: 'Data',
-                meta: { title: '字典数据1', activeMenu: '/system/dict' }
+                'name': 'Role',
+                'path': 'role',
+                'hidden': false,
+                'component': 'system/role/index',
+                'meta': {
+                  'title': '角色管理',
+                  'icon': 'peoples',
+                  'noCache': false,
+                  'link': null
+                }
               },
               {
-                path: 'index/:dictId(\\d+)',
-                component: () => import('@/views/system/dict/data'),
-                name: 'Data',
-                meta: { title: '字典数据2', activeMenu: '/system/dict' }
+                'name': 'Menu',
+                'path': 'menu',
+                'hidden': false,
+                'component': 'system/menu/index',
+                'meta': {
+                  'title': '菜单管理',
+                  'icon': 'tree-table',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Dept',
+                'path': 'dept',
+                'hidden': false,
+                'component': 'system/dept/index',
+                'meta': {
+                  'title': '部门管理',
+                  'icon': 'tree',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Post',
+                'path': 'post',
+                'hidden': false,
+                'component': 'system/post/index',
+                'meta': {
+                  'title': '岗位管理',
+                  'icon': 'post',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Dict',
+                'path': 'dict',
+                'hidden': false,
+                'component': 'system/dict/index',
+                'meta': {
+                  'title': '字典管理',
+                  'icon': 'dict',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Config',
+                'path': 'config',
+                'hidden': false,
+                'component': 'system/config/index',
+                'meta': {
+                  'title': '参数设置',
+                  'icon': 'edit',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Notice',
+                'path': 'notice',
+                'hidden': false,
+                'component': 'system/notice/index',
+                'meta': {
+                  'title': '通知公告',
+                  'icon': 'message',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Log',
+                'path': 'log',
+                'hidden': false,
+                'redirect': 'noRedirect',
+                'component': 'ParentView',
+                'alwaysShow': true,
+                'meta': {
+                  'title': '日志管理',
+                  'icon': 'log',
+                  'noCache': false,
+                  'link': null
+                },
+                'children': [
+                  {
+                    'name': 'Operlog',
+                    'path': 'operlog',
+                    'hidden': false,
+                    'component': 'monitor/operlog/index',
+                    'meta': {
+                      'title': '操作日志',
+                      'icon': 'form',
+                      'noCache': false,
+                      'link': null
+                    }
+                  },
+                  {
+                    'name': 'Logininfor',
+                    'path': 'logininfor',
+                    'hidden': false,
+                    'component': 'monitor/logininfor/index',
+                    'meta': {
+                      'title': '登录日志',
+                      'icon': 'logininfor',
+                      'noCache': false,
+                      'link': null
+                    }
+                  }
+                ]
+              },
+              {
+                'name': 'Oss',
+                'path': 'oss',
+                'hidden': false,
+                'component': 'system/oss/index',
+                'meta': {
+                  'title': '文件管理',
+                  'icon': 'upload',
+                  'noCache': false,
+                  'link': null
+                }
+              }
+            ]
+          },
+          {
+            'name': 'Monitor',
+            'path': '/monitor',
+            'hidden': false,
+            'redirect': 'noRedirect',
+            'component': 'Layout',
+            'alwaysShow': true,
+            'meta': {
+              'title': '系统监控',
+              'icon': 'monitor',
+              'noCache': false,
+              'link': null
+            },
+            'children': [
+              {
+                'name': 'Online',
+                'path': 'online',
+                'hidden': false,
+                'component': 'monitor/online/index',
+                'meta': {
+                  'title': '在线用户',
+                  'icon': 'online',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Cache',
+                'path': 'cache',
+                'hidden': false,
+                'component': 'monitor/cache/index',
+                'meta': {
+                  'title': '缓存监控',
+                  'icon': 'redis',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'XxlJob',
+                'path': 'XxlJob',
+                'hidden': false,
+                'component': 'monitor/xxljob/index',
+                'meta': {
+                  'title': '任务调度中心',
+                  'icon': 'job',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Admin',
+                'path': 'Admin',
+                'hidden': false,
+                'component': 'monitor/admin/index',
+                'meta': {
+                  'title': 'Admin监控',
+                  'icon': 'dashboard',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'CacheList',
+                'path': 'cacheList',
+                'hidden': false,
+                'component': 'monitor/cache/list',
+                'meta': {
+                  'title': '缓存列表',
+                  'icon': 'redis-list',
+                  'noCache': false,
+                  'link': null
+                }
+              }
+            ]
+          },
+          {
+            'name': 'Tool',
+            'path': '/tool',
+            'hidden': false,
+            'redirect': 'noRedirect',
+            'component': 'Layout',
+            'alwaysShow': true,
+            'meta': {
+              'title': '系统工具',
+              'icon': 'tool',
+              'noCache': false,
+              'link': null
+            },
+            'children': [
+              {
+                'name': 'Build',
+                'path': 'build',
+                'hidden': false,
+                'component': 'tool/build/index',
+                'meta': {
+                  'title': '表单构建',
+                  'icon': 'build',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Gen',
+                'path': 'gen',
+                'hidden': false,
+                'component': 'tool/gen/index',
+                'meta': {
+                  'title': '代码生成',
+                  'icon': 'code',
+                  'noCache': false,
+                  'link': null
+                }
+              }
+            ]
+          },
+          {
+            'name': 'Https://gitee.com/JavaLionLi/RuoYi-Vue-Plus',
+            'path': 'https://gitee.com/JavaLionLi/RuoYi-Vue-Plus',
+            'hidden': false,
+            'component': 'Layout',
+            'meta': {
+              'title': 'PLUS官网',
+              'icon': 'guide',
+              'noCache': false,
+              'link': 'https://gitee.com/JavaLionLi/RuoYi-Vue-Plus'
+            }
+          },
+          {
+            'name': 'Demo',
+            'path': '/demo',
+            'hidden': false,
+            'redirect': 'noRedirect',
+            'component': 'Layout',
+            'alwaysShow': true,
+            'meta': {
+              'title': '测试菜单',
+              'icon': 'star',
+              'noCache': false,
+              'link': null
+            },
+            'children': [
+              {
+                'name': 'Demo',
+                'path': 'demo',
+                'hidden': false,
+                'component': 'demo/demo/index',
+                'meta': {
+                  'title': '测试单表',
+                  'icon': '#',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
+                'name': 'Tree',
+                'path': 'tree',
+                'hidden': false,
+                'component': 'demo/tree/index',
+                'meta': {
+                  'title': '测试树表',
+                  'icon': '#',
+                  'noCache': false,
+                  'link': null
+                }
               }
             ]
           }
         ]
+        const sdata = JSON.parse(JSON.stringify(data))
+        const rdata = JSON.parse(JSON.stringify(data))
+        const sidebarRoutes = filterAsyncRouter(sdata)
+        const rewriteRoutes = filterAsyncRouter(rdata, false, true)
+        const asyncRoutes = filterDynamicRoutes(dynamicRoutes);
+        rewriteRoutes.push({ path: '*', redirect: '/404', hidden: true })
+        router.addRoutes(asyncRoutes);
+        commit('SET_ROUTES', rewriteRoutes)
         commit('SET_SIDEBAR_ROUTERS', constantRoutes.concat(sidebarRoutes))
         commit('SET_DEFAULT_ROUTES', sidebarRoutes)
         commit('SET_TOPBAR_ROUTES', sidebarRoutes)
+        resolve(rewriteRoutes)
       })
     }
   }
