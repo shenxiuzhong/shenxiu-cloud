@@ -136,15 +136,16 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['system:dict:edit']"
+
           >修改</el-button>
+<!--          v-hasPermi="['system:dict:edit']"-->
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['system:dict:remove']"
           >删除</el-button>
+<!--          v-hasPermi="['system:dict:remove']"-->
         </template>
       </el-table-column>
     </el-table>
@@ -244,8 +245,8 @@ export default {
     getList() {
       this.loading = true;
       listType(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-          this.typeList = response.rows;
-          this.total = response.total;
+          this.typeList = response.data.rows;
+          this.total = response.data.total;
           this.loading = false;
         }
       );

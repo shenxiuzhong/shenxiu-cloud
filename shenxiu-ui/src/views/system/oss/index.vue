@@ -259,8 +259,8 @@ export default {
         this.previewListResource = response.msg === undefined ? true : response.msg === 'true';
       });
       listOss(this.queryParams).then(response => {
-        this.ossList = response.rows;
-        this.total = response.total;
+        this.ossList = response.data.rows;
+        this.total = response.data.total;
         this.loading = false;
       });
     },
