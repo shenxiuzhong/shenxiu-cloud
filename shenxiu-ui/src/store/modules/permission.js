@@ -48,6 +48,49 @@ const permission = {
           resolve(rewriteRoutes)
         })
       })
+    },
+    //临时路由
+    TempGenerateRoutes({ commit }) {
+      return new Promise(resolve => {
+        const sidebarRoutes = [
+          {
+            'name': 'System',
+            'path': '/system',
+            'hidden': false,
+            'redirect': 'noRedirect',
+            'component': Layout,
+            'alwaysShow': true,
+            'meta': {
+              'title': '网格管理',
+              'icon': 'iconfont verycloud-tudipinggu',
+              'outLink': null
+            },
+            'children': [
+              {
+                path: 'index/:dictId(\\d+)',
+                component: () => import('@/views/system/dict/data'),
+                name: 'Data',
+                meta: { title: '字典数据', activeMenu: '/system/dict' }
+              },
+              {
+                path: 'index/:dictId(\\d+)',
+                component: () => import('@/views/system/dict/data'),
+                name: 'Data',
+                meta: { title: '字典数据1', activeMenu: '/system/dict' }
+              },
+              {
+                path: 'index/:dictId(\\d+)',
+                component: () => import('@/views/system/dict/data'),
+                name: 'Data',
+                meta: { title: '字典数据2', activeMenu: '/system/dict' }
+              }
+            ]
+          }
+        ]
+        commit('SET_SIDEBAR_ROUTERS', constantRoutes.concat(sidebarRoutes))
+        commit('SET_DEFAULT_ROUTES', sidebarRoutes)
+        commit('SET_TOPBAR_ROUTES', sidebarRoutes)
+      })
     }
   }
 }

@@ -7,7 +7,7 @@ import { getToken } from '@/utils/auth'
 import { isRelogin } from '@/utils/request'
 
 NProgress.configure({ showSpinner: false })
-
+import Layout from '@/layout'
 const whiteList = ['/login', '/auth-redirect', '/bind', '/register']
 
 router.beforeEach((to, from, next) => {
@@ -42,6 +42,10 @@ router.beforeEach((to, from, next) => {
   } else {
     // 没有token
     if (true) {
+      store.dispatch('TempGenerateRoutes').then(accessRoutes => {
+        router.addRoutes(accessRoutes) // 动态添加临时可访问路由表
+        next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+      })
       //whiteList.indexOf(to.path) !== -1
       // 在免登录白名单，直接进入
       next()
