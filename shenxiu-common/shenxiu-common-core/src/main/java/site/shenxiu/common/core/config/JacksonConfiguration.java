@@ -24,7 +24,7 @@ import java.util.TimeZone;
  */
 @Slf4j
 @AutoConfigureBefore(JacksonAutoConfiguration.class)
-public class JacksonConfig {
+public class JacksonConfiguration {
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer customizer() {
