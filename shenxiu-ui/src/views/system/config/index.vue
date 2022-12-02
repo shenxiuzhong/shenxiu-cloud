@@ -102,9 +102,9 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="configList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" border :data="configList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="参数主键" align="center" prop="configId" />
+      <el-table-column label="序号" width="55" align="center" type="index" />
       <el-table-column label="参数名称" align="center" prop="configName" :show-overflow-tooltip="true" />
       <el-table-column label="参数键名" align="center" prop="configKey" :show-overflow-tooltip="true" />
       <el-table-column label="参数键值" align="center" prop="configValue" />
@@ -318,7 +318,12 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const configIds = row.configId || this.ids;
+      let configIds = [];
+      if(row.configId){
+        configIds.push(row.configId)
+      }else{
+        configIds = this.ids;
+      }
       this.$modal.confirm('是否确认删除参数编号为"' + configIds + '"的数据项？').then(function() {
           return delConfig(configIds);
         }).then(() => {

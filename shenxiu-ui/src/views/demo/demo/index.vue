@@ -94,7 +94,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="demoList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" border :data="demoList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="主键" align="center" prop="id" v-if="false"/>
       <el-table-column label="部门id" align="center" prop="deptId" />

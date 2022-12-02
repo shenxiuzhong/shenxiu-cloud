@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询参数列表
 export function listConfig(query) {
   return request({
-    url: '/system/config/list',
+    url: '/system/config/getPage',
     method: 'get',
     params: query
   })
@@ -28,7 +28,7 @@ export function getConfigKey(configKey) {
 // 新增参数配置
 export function addConfig(data) {
   return request({
-    url: '/system/config',
+    url: '/system/config/add',
     method: 'post',
     data: data
   })
@@ -37,8 +37,8 @@ export function addConfig(data) {
 // 修改参数配置
 export function updateConfig(data) {
   return request({
-    url: '/system/config',
-    method: 'put',
+    url: '/system/config/edit',
+    method: 'post',
     data: data
   })
 }
@@ -47,7 +47,7 @@ export function updateConfig(data) {
 export function updateConfigByKey(key, value) {
   return request({
     url: '/system/config/updateByKey',
-    method: 'put',
+    method: 'post',
     data: {
       configKey: key,
       configValue: value
@@ -58,8 +58,9 @@ export function updateConfigByKey(key, value) {
 // 删除参数配置
 export function delConfig(configId) {
   return request({
-    url: '/system/config/' + configId,
-    method: 'delete'
+    url: '/system/config/remove',
+    method: 'post',
+    data: configId
   })
 }
 
@@ -67,6 +68,6 @@ export function delConfig(configId) {
 export function refreshCache() {
   return request({
     url: '/system/config/refreshCache',
-    method: 'delete'
+    method: 'post'
   })
 }

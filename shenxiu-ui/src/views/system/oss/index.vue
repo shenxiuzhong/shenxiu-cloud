@@ -118,7 +118,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="ossList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" border :data="ossList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="对象存储主键" align="center" prop="ossId" v-if="false"/>
       <el-table-column label="文件名" align="center" prop="fileName" />

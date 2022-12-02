@@ -71,7 +71,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="ossConfigList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" border :data="ossConfigList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="主建" align="center" prop="ossConfigId" v-if="false"/>
       <el-table-column label="配置key" align="center" prop="configKey" />
