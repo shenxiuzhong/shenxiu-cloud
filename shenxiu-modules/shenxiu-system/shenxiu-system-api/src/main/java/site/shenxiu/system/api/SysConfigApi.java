@@ -24,8 +24,8 @@ public interface SysConfigApi {
      * @param pageQuery 分页查询
      * @return 分页数据对象
      */
-    @GetMapping("/page")
-    R<PageData<SysConfig>> page(SysConfig config, PageQuery pageQuery);
+    @GetMapping("/getPage")
+    R<PageData<SysConfig>> getPage(SysConfig config, PageQuery pageQuery);
 
     /**
      * 导出参数配置
@@ -39,8 +39,8 @@ public interface SysConfigApi {
      * @param configId 配置ID
      * @return 参数配置对象
      */
-    @GetMapping(value = "/get/{configId}")
-    R<SysConfig> get(@PathVariable Long configId);
+    @GetMapping(value = "/{configId}")
+    R<SysConfig> getInfo(@PathVariable Long configId);
 
     /**
      * 根据参数键名查询参数值
@@ -81,8 +81,8 @@ public interface SysConfigApi {
      * @param configIds 配置ID串
      * @return 响应对象
      */
-    @PostMapping("/remove/{configIds}")
-    R<Void> remove(@PathVariable Long[] configIds);
+    @PostMapping("/remove")
+    R<Void> remove(@RequestBody Long[] configIds);
 
     /**
      * 刷新参数缓存

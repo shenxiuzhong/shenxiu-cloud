@@ -25,7 +25,7 @@ public class SysConfigController extends BaseController implements SysConfigApi 
     private final SysConfigService configService;
 
     @Override
-    public R<PageData<SysConfig>> page(SysConfig config, PageQuery pageQuery) {
+    public R<PageData<SysConfig>> getPage(SysConfig config, PageQuery pageQuery) {
         PageData<SysConfig> sysConfigPageData = configService.selectPageConfigList(config, pageQuery);
         return R.success(sysConfigPageData);
     }
@@ -36,8 +36,8 @@ public class SysConfigController extends BaseController implements SysConfigApi 
     }
 
     @Override
-    public R<SysConfig> get(Long configId) {
-        return null;
+    public R<SysConfig> getInfo(Long configId) {
+        return R.success(configService.selectConfigById(configId));
     }
 
     @Override
@@ -47,12 +47,14 @@ public class SysConfigController extends BaseController implements SysConfigApi 
 
     @Override
     public R<Void> add(SysConfig config) {
-        return null;
+        configService.insertConfig(config);
+        return R.success();
     }
 
     @Override
     public R<Void> edit(SysConfig config) {
-        return null;
+        configService.updateConfig(config);
+        return R.success();
     }
 
     @Override
@@ -62,7 +64,8 @@ public class SysConfigController extends BaseController implements SysConfigApi 
 
     @Override
     public R<Void> remove(Long[] configIds) {
-        return null;
+        configService.deleteConfigByIds(configIds);
+        return R.success();
     }
 
     @Override
