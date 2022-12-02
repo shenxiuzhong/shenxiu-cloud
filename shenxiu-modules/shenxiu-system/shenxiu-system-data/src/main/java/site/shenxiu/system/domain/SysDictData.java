@@ -24,10 +24,10 @@ import javax.validation.constraints.Size;
 public class SysDictData extends BaseEntity {
 
     /**
-     * 字典编码
+     * 字典数据主键
      */
-    @TableId(value = "dict_code")
-    private Long dictCode;
+    @TableId(value = "dict_data_id")
+    private Long dictDataId;
 
     /**
      * 字典排序

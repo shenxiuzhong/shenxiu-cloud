@@ -6,7 +6,7 @@ server:
 spring:
   application:
     # 应用名称
-    name: shenxiu-system
+    name: shenxiu-system-provider
   profiles:
     # 环境配置
     active: @profiles.active@

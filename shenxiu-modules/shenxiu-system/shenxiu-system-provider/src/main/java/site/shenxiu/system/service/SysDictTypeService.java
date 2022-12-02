@@ -2,7 +2,6 @@ package site.shenxiu.system.service;
 
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
-import site.shenxiu.system.domain.SysDictData;
 import site.shenxiu.system.domain.SysDictType;
 
 import java.util.List;
@@ -36,14 +35,6 @@ public interface SysDictTypeService{
      * @return 字典类型集合信息
      */
     List<SysDictType> selectDictTypeAll();
-
-    /**
-     * 根据字典类型查询字典数据
-     *
-     * @param dictType 字典类型
-     * @return 字典数据集合信息
-     */
-    List<SysDictData> selectDictDataByType(String dictType);
 
     /**
      * 根据字典类型ID查询信息
@@ -87,17 +78,15 @@ public interface SysDictTypeService{
      * 新增保存字典类型信息
      *
      * @param dictType 字典类型信息
-     * @return 结果
      */
-    List<SysDictData> insertDictType(SysDictType dictType);
+    void insertDictType(SysDictType dictType);
 
     /**
      * 修改保存字典类型信息
      *
      * @param dictType 字典类型信息
-     * @return 结果
      */
-    List<SysDictData> updateDictType(SysDictType dictType);
+    void updateDictType(SysDictType dictType);
 
     /**
      * 校验字典类型称是否唯一

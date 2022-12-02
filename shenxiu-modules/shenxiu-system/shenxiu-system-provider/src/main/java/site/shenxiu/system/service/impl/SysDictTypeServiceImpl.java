@@ -19,7 +19,6 @@ import site.shenxiu.system.mapper.SysDictDataMapper;
 import site.shenxiu.system.mapper.SysDictTypeMapper;
 import site.shenxiu.system.service.SysDictTypeService;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -78,20 +77,20 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         //return baseMapper.selectList();
     }
 
-    /**
-     * 根据字典类型查询字典数据
-     *
-     * @param dictType 字典类型
-     * @return 字典数据集合信息
-     */
-    @Override
-    public List<SysDictData> selectDictDataByType(String dictType) {
-//        List<SysDictData> dictDatas = dictDataMapper.selectDictDataByType(dictType);
-//        if (CollUtil.isNotEmpty(dictDatas)) {
-//            return dictDatas;
-//        }
-        return null;
-    }
+//    /**
+//     * 根据字典类型查询字典数据
+//     *
+//     * @param dictType 字典类型
+//     * @return 字典数据集合信息
+//     */
+//    @Override
+//    public List<SysDictData> selectDictDataByType(String dictType) {
+////        List<SysDictData> dictDatas = dictDataMapper.selectDictDataByType(dictType);
+////        if (CollUtil.isNotEmpty(dictDatas)) {
+////            return dictDatas;
+////        }
+//        return null;
+//    }
 
     /**
      * 根据字典类型ID查询信息
@@ -167,40 +166,36 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
      * 新增保存字典类型信息
      *
      * @param dict 字典类型信息
-     * @return 结果
      */
 //    @CachePut(cacheNames = CacheNames.SYS_DICT, key = "#dict.dictType")
     @Override
-    public List<SysDictData> insertDictType(SysDictType dict) {
+    public void insertDictType(SysDictType dict) {
         int row = baseMapper.insert(dict);
         if (row > 0) {
-            return new ArrayList<>();
+            return;
         }
-        return null;
-//        throw new ServiceException("操作失败");
+        throw new BusinessException("操作失败");
     }
 
     /**
      * 修改保存字典类型信息
      *
      * @param dict 字典类型信息
-     * @return 结果
      */
 //    @CachePut(cacheNames = CacheNames.SYS_DICT, key = "#dict.dictType")
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<SysDictData> updateDictType(SysDictType dict) {
+    public void updateDictType(SysDictType dict) {
         SysDictType oldDict = baseMapper.selectById(dict.getDictId());
         dictDataMapper.update(null, new LambdaUpdateWrapper<SysDictData>()
                 .set(SysDictData::getDictType, dict.getDictType())
                 .eq(SysDictData::getDictType, oldDict.getDictType()));
         int row = baseMapper.updateById(dict);
-        return null;
-//        if (row > 0) {
+        if (row > 0) {
+            return;
 //            CacheUtils.evict(CacheNames.SYS_DICT, oldDict.getDictType());
-//            return dictDataMapper.selectDictDataByType(dict.getDictType());
-//        }
-//        throw new ServiceException("操作失败");
+        }
+        throw new BusinessException("操作失败");
     }
 
     /**

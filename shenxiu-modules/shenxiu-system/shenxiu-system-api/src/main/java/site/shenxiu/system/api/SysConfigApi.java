@@ -24,8 +24,8 @@ public interface SysConfigApi {
      * @param pageQuery 分页查询
      * @return 分页数据对象
      */
-    @GetMapping("/list")
-    R<PageData<SysConfig>> list(SysConfig config, PageQuery pageQuery);
+    @GetMapping("/page")
+    R<PageData<SysConfig>> page(SysConfig config, PageQuery pageQuery);
 
     /**
      * 导出参数配置

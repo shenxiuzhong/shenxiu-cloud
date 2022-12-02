@@ -5,7 +5,7 @@
 <mapper namespace="site.shenxiu.system.mapper.SysDictDataMapper">
 
     <resultMap id="SysDictDataResultMap" type="site.shenxiu.system.domain.SysDictData">
-            <id property="dictCode" column="dict_code" jdbcType="BIGINT"/>
+            <id property="dictDataId" column="dict_data_id" jdbcType="BIGINT"/>
             <result property="dictSort" column="dict_sort" jdbcType="INTEGER"/>
             <result property="dictLabel" column="dict_label" jdbcType="VARCHAR"/>
             <result property="dictValue" column="dict_value" jdbcType="VARCHAR"/>
@@ -22,7 +22,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        dict_code,dict_sort,dict_label,
+        dict_data_id,dict_sort,dict_label,
         dict_value,dict_type,css_class,
         list_class,is_default,status,
         create_by,create_time,

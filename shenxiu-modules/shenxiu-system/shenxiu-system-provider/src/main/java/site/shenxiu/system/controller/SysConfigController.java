@@ -1,13 +1,12 @@
 package site.shenxiu.system.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.yaml.snakeyaml.constructor.BaseConstructor;
 import site.shenxiu.common.core.domain.R;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
+import site.shenxiu.common.web.controller.BaseController;
 import site.shenxiu.system.api.SysConfigApi;
 import site.shenxiu.system.domain.SysConfig;
 import site.shenxiu.system.service.SysConfigService;
@@ -21,13 +20,12 @@ import site.shenxiu.system.service.SysConfigService;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/config")
-public class SysConfigController extends BaseConstructor implements SysConfigApi {
+public class SysConfigController extends BaseController implements SysConfigApi {
 
     private final SysConfigService configService;
 
-    @GetMapping("/list")
     @Override
-    public R<PageData<SysConfig>> list(SysConfig config, PageQuery pageQuery) {
+    public R<PageData<SysConfig>> page(SysConfig config, PageQuery pageQuery) {
         PageData<SysConfig> sysConfigPageData = configService.selectPageConfigList(config, pageQuery);
         return R.success(sysConfigPageData);
     }
