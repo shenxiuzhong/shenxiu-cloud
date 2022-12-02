@@ -113,7 +113,7 @@
       <el-table-column label="字典名称" align="center" prop="dictName" :show-overflow-tooltip="true"/>
       <el-table-column label="字典类型" align="center" :show-overflow-tooltip="true">
         <template slot-scope="scope">
-          <router-link :to="'/system/dict-data/index/' + scope.row.dictId" class="link-type">
+          <router-link :to="{name:'DictData',params:{'dictId':scope.row.dictId}}" class="link-type">
             <span>{{ scope.row.dictType }}</span>
           </router-link>
         </template>
@@ -136,16 +136,15 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-
+            v-hasPermi="['system:dict:edit']"
           >修改</el-button>
-<!--          v-hasPermi="['system:dict:edit']"-->
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
+            v-hasPermi="['system:dict:remove']"
           >删除</el-button>
-<!--          v-hasPermi="['system:dict:remove']"-->
         </template>
       </el-table-column>
     </el-table>
