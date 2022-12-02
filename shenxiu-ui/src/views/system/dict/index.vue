@@ -107,10 +107,10 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="typeList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="字典编号" align="center" prop="dictId" />
-      <el-table-column label="字典名称" align="center" prop="dictName" :show-overflow-tooltip="true" />
+    <el-table v-loading="loading"  border :data="typeList" @selection-change="handleSelectionChange">
+      <el-table-column type="selection" width="55" align="center"/>
+      <el-table-column label="序号" width="55" align="center" type="index"/>
+      <el-table-column label="字典名称" align="center" prop="dictName" :show-overflow-tooltip="true"/>
       <el-table-column label="字典类型" align="center" :show-overflow-tooltip="true">
         <template slot-scope="scope">
           <router-link :to="'/system/dict-data/index/' + scope.row.dictId" class="link-type">
@@ -322,7 +322,12 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const dictIds = row.dictId || this.ids;
+      let dictIds = []
+      if(row.dictId){
+        dictIds.push(row.dictId)
+      }else{
+        dictIds=this.ids;
+      }
       this.$modal.confirm('是否确认删除字典编号为"' + dictIds + '"的数据项？').then(function() {
         return delType(dictIds);
       }).then(() => {
