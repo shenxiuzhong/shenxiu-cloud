@@ -1,6 +1,7 @@
 package site.shenxiu.common.mybatis.config;
 
 import cn.hutool.core.net.NetUtil;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import site.shenxiu.common.mybatis.handler.InsertAndUpdateMetaObjectHandler;
 
 /**
  * mybatis-plus配置类
@@ -65,6 +67,14 @@ public class MybatisPlusConfiguration {
     }
 
     /**
+     * 元对象字段填充控制器
+     */
+    @Bean
+    public MetaObjectHandler metaObjectHandler() {
+        return new InsertAndUpdateMetaObjectHandler();
+    }
+
+    /*
      * PaginationInnerInterceptor 分页插件，自动识别数据库类型
      * https://baomidou.com/pages/97710a/
      * OptimisticLockerInnerInterceptor 乐观锁插件
