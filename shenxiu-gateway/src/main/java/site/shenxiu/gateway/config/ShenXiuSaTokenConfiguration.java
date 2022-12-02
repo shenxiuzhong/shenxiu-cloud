@@ -6,7 +6,6 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import site.shenxiu.common.core.constant.HttpStatus;
 import site.shenxiu.gateway.config.properties.IgnoreProperties;
 
 /**
@@ -16,7 +15,7 @@ import site.shenxiu.gateway.config.properties.IgnoreProperties;
  * @version 2022/11/29 15:45
  */
 @Configuration
-public class ShenXiuSaTokenConfigure {
+public class ShenXiuSaTokenConfiguration {
     /**
      * 注册 [Sa-Token全局过滤器]
      * @param ignoreProperties 忽略配置
@@ -43,6 +42,6 @@ public class ShenXiuSaTokenConfigure {
                                 //     log.debug("临时有效时间: {}", StpUtil.getTokenActivityTimeout());
                                 // }
                             });
-                }).setError(e -> SaResult.error("认证失败，无法访问系统资源").setCode(HttpStatus.UNAUTHORIZED));
+                }).setError(e -> SaResult.error("认证失败，无法访问系统资源"));
     }
 }

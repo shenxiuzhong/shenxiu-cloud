@@ -25,6 +25,7 @@ import java.util.Map;
  */
 @Service
 public class ValidateCaptchaServiceImpl implements ValidateCaptchaService {
+
     @Resource
     private CaptchaProperties captchaProperties;
 

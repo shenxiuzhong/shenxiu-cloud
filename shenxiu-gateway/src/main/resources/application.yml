@@ -2,7 +2,7 @@
 spring:
   application:
     # 应用名称
-    name: ruoyi-gateway
+    name: shenxiu-gateway
   profiles:
     # 环境配置
     active: @profiles.active@
@@ -26,4 +26,138 @@ spring:
 #      - optional:nacos:application-common.yml
 #      - optional:nacos:${spring.application.name}.yml
 
+
+# 安全配置
+shenxiu:
+  security:
+    # 验证码
+    captcha:
+      # 是否开启验证码
+      enabled: true
+      # 验证码类型 math 数组计算 char 字符验证
+      type: MATH
+      # line 线段干扰 circle 圆圈干扰 shear 扭曲干扰
+      category: CIRCLE
+      # 数字验证码位数
+      numberLength: 1
+      # 字符验证码长度
+      charLength: 4
+    # 防止XSS攻击
+    xss:
+      enabled: true
+      exclude-sites:
+        - 127.0.0.1
+    # 不校验白名单
+    ignore:
+      whites:
+        - /captcha
+        - /auth/logout
+        - /auth/login
+        - /auth/smsLogin
+        - /auth/xcxLogin
+        - /auth/register
+        - /resource/sms/code
+        - /*/v3/api-docs
+        - /csrf
+        - /**
+---
+spring:
+  cloud:
+    # 网关配置
+    gateway:
+      # 打印请求日志(自定义)
+      requestLog: true
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        # 认证中心
+        - id: ruoyi-auth
+          uri: lb://ruoyi-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - ValidateCodeFilter
+            - StripPrefix=1
+        # 代码生成
+        - id: ruoyi-gen
+          uri: lb://ruoyi-gen
+          predicates:
+            - Path=/code/**
+          filters:
+            - StripPrefix=1
+        # 系统模块
+        - id: shenxiu-system-provider
+          uri: lb://shenxiu-system-provider
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+        # 资源服务
+        - id: ruoyi-resource
+          uri: lb://ruoyi-resource
+          predicates:
+            - Path=/resource/**
+          filters:
+            - StripPrefix=1
+        # 演示服务
+        - id: ruoyi-demo
+          uri: lb://ruoyi-demo
+          predicates:
+            - Path=/demo/**
+          filters:
+            - StripPrefix=1
+        # MQ演示服务
+        - id: ruoyi-stream-mq
+          uri: lb://ruoyi-stream-mq
+          predicates:
+            - Path=/stream-mq/**
+          filters:
+            - StripPrefix=1
+
+    # sentinel 配置
+#    sentinel:
+#      # nacos配置持久化
+#      datasource:
+#        ds1:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: sentinel-${spring.application.name}.json
+#            groupId: ${spring.cloud.nacos.config.group}
+#            namespace: ${spring.profiles.active}
+#            data-type: json
+#            rule-type: flow
+
+---
+spring:
+  servlet:
+    multipart:
+      # 整个请求大小限制
+      max-request-size: 20MB
+      # 上传单个文件大小限制
+      max-file-size: 10MB
+  #jackson配置
+  jackson:
+    # 日期格式化
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      # 格式化输出
+      INDENT_OUTPUT: false
+      # 忽略无法转换的对象
+      fail_on_empty_beans: false
+    deserialization:
+      # 允许对象忽略json中不存在的属性
+      fail_on_unknown_properties: false
+
+  # redis通用配置 子服务可以自行配置进行覆盖
+  redis:
+    host: 10.10.10.20
+    port: 6379
+    # 密码(如没有密码请注释掉)
+    password: shenxiu123
+    database: 0
+    timeout: 10s
+    ssl: false
 
