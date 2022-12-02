@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  site.shenxiu.common.core.config.JacksonConfig
+  site.shenxiu.common.core.config.JacksonConfiguration,\
+  site.shenxiu.common.core.config.ValidatorConfiguration
 
