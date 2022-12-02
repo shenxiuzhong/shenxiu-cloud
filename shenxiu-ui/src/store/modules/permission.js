@@ -181,6 +181,18 @@ const permission = {
                 }
               },
               {
+                'name': 'DictData',
+                'path': 'index',
+                'hidden': true,
+                'component': 'system/dict/data',
+                'meta': {
+                  'title': '字典数据',
+                  'icon': 'dict',
+                  'noCache': false,
+                  'link': null
+                }
+              },
+              {
                 'name': 'Config',
                 'path': 'config',
                 'hidden': false,
