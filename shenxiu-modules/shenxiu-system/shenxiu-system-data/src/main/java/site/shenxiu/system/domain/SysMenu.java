@@ -1,5 +1,6 @@
 package site.shenxiu.system.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,6 +12,8 @@ import site.shenxiu.common.core.domain.BaseEntity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 菜单权限表 sys_menu
@@ -109,5 +112,18 @@ public class SysMenu extends BaseEntity {
      * 备注
      */
     private String remark;
+
+    /**
+     * 父菜单名称
+     */
+    @TableField(exist = false)
+    private String parentName;
+
+
+    /**
+     * 子项
+     */
+    @TableField(exist = false)
+    private List<SysMenu> children = new ArrayList<>();
 
 }

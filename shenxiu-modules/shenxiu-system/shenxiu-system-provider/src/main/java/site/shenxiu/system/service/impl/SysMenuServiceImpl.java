@@ -1,6 +1,7 @@
 package site.shenxiu.system.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.lang.Validator;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -24,16 +25,19 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
-* 针对表【sys_menu(菜单权限表)】的数据库操作Service实现
-* @author ShenXiu
-* @version 2022-11-24 15:15:56
-*/
+ * 针对表【sys_menu(菜单权限表)】的数据库操作Service实现
+ *
+ * @author ShenXiu
+ * @version 2022-11-24 15:15:56
+ */
 @RequiredArgsConstructor
 @Service
-public class SysMenuServiceImpl implements SysMenuService{
+public class SysMenuServiceImpl implements SysMenuService {
     private final SysMenuMapper baseMapper;
     private final SysRoleMapper roleMapper;
     private final SysRoleMenuMapper roleMenuMapper;
@@ -62,6 +66,7 @@ public class SysMenuServiceImpl implements SysMenuService{
         menuList = baseMapper.selectList(new LambdaQueryWrapper<SysMenu>()
                 .like(StringUtils.isNotBlank(menu.getMenuName()), SysMenu::getMenuName, menu.getMenuName())
                 .eq(StringUtils.isNotBlank(menu.getVisible()), SysMenu::getVisible, menu.getVisible())
+                .eq(StringUtils.isNotBlank(menu.getMenuType()), SysMenu::getMenuType, menu.getMenuType())
                 .eq(StringUtils.isNotBlank(menu.getStatus()), SysMenu::getStatus, menu.getStatus())
                 .orderByAsc(SysMenu::getParentId)
                 .orderByAsc(SysMenu::getOrderNum));
@@ -94,7 +99,7 @@ public class SysMenuServiceImpl implements SysMenuService{
      */
     @Override
     public Set<String> selectMenuPermsByUserId(Long userId) {
-        List<String> perms =null;// baseMapper.selectMenuPermsByUserId(userId);
+        List<String> perms = null;// baseMapper.selectMenuPermsByUserId(userId);
         Set<String> permsSet = new HashSet<>();
         for (String perm : perms) {
             if (StringUtils.isNotEmpty(perm)) {
@@ -131,12 +136,8 @@ public class SysMenuServiceImpl implements SysMenuService{
     @Override
     public List<SysMenu> selectMenuTreeByUserId(Long userId) {
         List<SysMenu> menus = null;
-//        if (LoginHelper.isAdmin(userId)) {
-//            menus = baseMapper.selectMenuTreeAll();
-//        } else {
-//            menus = baseMapper.selectMenuTreeByUserId(userId);
-//        }
-        return getChildPerms(menus, 0);
+        menus = this.selectMenuTreeAll();
+        return getChildPerms(menus);
     }
 
     /**
@@ -168,8 +169,8 @@ public class SysMenuServiceImpl implements SysMenuService{
             router.setComponent(getComponent(menu));
             router.setQuery(menu.getQueryParam());
             router.setMeta(new MetaVo(menu.getMenuName(), menu.getIcon(), StringUtils.equals("1", menu.getIsCache()), menu.getPath()));
-            List<SysMenu> cMenus =null;//  menu.getChildren();
-            if (!cMenus.isEmpty() && SystemConstants.TYPE_DIR.equals(menu.getMenuType())) {
+            List<SysMenu> cMenus = menu.getChildren();
+            if (ObjectUtil.isNotNull(cMenus) && SystemConstants.TYPE_DIR.equals(menu.getMenuType())) {
                 router.setAlwaysShow(true);
                 router.setRedirect("noRedirect");
                 router.setChildren(buildMenus(cMenus));
@@ -381,8 +382,7 @@ public class SysMenuServiceImpl implements SysMenuService{
      * @return 结果
      */
     public boolean isInnerLink(SysMenu menu) {
-        return menu.getIsFrame().equals(SystemConstants.NO_FRAME);
-       // return menu.getIsFrame().equals(SystemConstants.NO_FRAME) && StringUtils.ishttp(menu.getPath());
+        return menu.getIsFrame().equals(SystemConstants.NO_FRAME) && Validator.isUrl(menu.getPath());
     }
 
     /**
@@ -396,70 +396,43 @@ public class SysMenuServiceImpl implements SysMenuService{
     }
 
     /**
-     * 根据父节点的ID获取所有子节点
-     *
-     * @param list     分类表
-     * @param parentId 传入的父节点ID
-     * @return String
-     */
-    public List<SysMenu> getChildPerms(List<SysMenu> list, int parentId) {
-        List<SysMenu> returnList = new ArrayList<SysMenu>();
-        for (SysMenu t : list) {
-            // 一、根据传入的某个父节点ID,遍历该父节点的所有子节点
-            if (t.getParentId() == parentId) {
-                recursionFn(list, t);
-                returnList.add(t);
-            }
-        }
-        return returnList;
-    }
-
-    /**
-     * 递归列表
-     *
-     * @param list
-     * @param t
-     */
-    private void recursionFn(List<SysMenu> list, SysMenu t) {
-        // 得到子节点列表
-        List<SysMenu> childList = getChildList(list, t);
-       // t.setChildren(childList);
-        for (SysMenu tChild : childList) {
-            if (hasChild(list, tChild)) {
-                recursionFn(list, tChild);
-            }
-        }
-    }
-
-    /**
-     * 得到子节点列表
-     */
-    private List<SysMenu> getChildList(List<SysMenu> list, SysMenu t) {
-        List<SysMenu> tlist = new ArrayList<SysMenu>();
-        for (SysMenu n : list) {
-            if (n.getParentId().longValue() == t.getMenuId().longValue()) {
-                tlist.add(n);
-            }
-        }
-        return tlist;
-    }
-
-    /**
-     * 判断是否有子节点
-     */
-    private boolean hasChild(List<SysMenu> list, SysMenu t) {
-        return getChildList(list, t).size() > 0;
-    }
-
-    /**
      * 内链域名特殊字符替换
      *
      * @return
      */
     public String innerLinkReplaceEach(String path) {
-        return StringUtils.replaceEach(path, new String[]{Constants.HTTP, Constants.HTTPS, Constants.WWW, "." },
+        return StringUtils.replaceEach(path, new String[]{Constants.HTTP, Constants.HTTPS, Constants.WWW, "."},
                 new String[]{"", ""});
     }
+
+    /**
+     * 根据用户ID查询菜单
+     *
+     * @return 菜单列表
+     */
+    public List<SysMenu> selectMenuTreeAll() {
+        LambdaQueryWrapper<SysMenu> lqw = new LambdaQueryWrapper<SysMenu>()
+                .in(SysMenu::getMenuType, SystemConstants.TYPE_DIR, SystemConstants.TYPE_MENU)
+                .eq(SysMenu::getStatus, SystemConstants.MENU_NORMAL)
+                .orderByAsc(SysMenu::getParentId)
+                .orderByAsc(SysMenu::getOrderNum);
+        return baseMapper.selectList(lqw);
+    }
+
+    /**
+     * 拼装父子结点数据
+     *
+     * @param menuList 菜单列表
+     * @return 菜单列表
+     */
+    public List<SysMenu> getChildPerms(List<SysMenu> menuList) {
+        Map<Long, List<SysMenu>> childMap = menuList.stream().collect(Collectors.groupingBy(SysMenu::getParentId));
+        return menuList.stream().filter(item -> {
+            item.setChildren(childMap.get(item.getMenuId()));
+            return childMap.get(item.getParentId()) != null;
+        }).collect(Collectors.toList());
+    }
+
 }
 
 
