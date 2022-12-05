@@ -42,10 +42,14 @@ router.beforeEach((to, from, next) => {
     // 没有token
     if(flag){
       flag=false
-      store.dispatch('TempGenerateRoutes').then(accessRoutes => {
+      store.dispatch('GenerateRoutes').then(accessRoutes => {
         router.addRoutes(accessRoutes) // 动态添加临时可访问路由表
         next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
       })
+      // store.dispatch('TempGenerateRoutes').then(accessRoutes => {
+      //   router.addRoutes(accessRoutes) // 动态添加临时可访问路由表
+      //   next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+      // })
     }
     if (true) {
       //whiteList.indexOf(to.path) !== -1
