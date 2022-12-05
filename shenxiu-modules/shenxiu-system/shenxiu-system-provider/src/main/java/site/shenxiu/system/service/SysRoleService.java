@@ -17,9 +17,9 @@ public interface SysRoleService{
 
     /**
      * 分页查询角色信息
-     * @param role
-     * @param pageQuery
-     * @return
+     * @param role 角色
+     * @param pageQuery 分页查询对象
+     * @return 分页结果
      */
     PageData<SysRole> selectPageRoleList(SysRole role, PageQuery pageQuery);
 
