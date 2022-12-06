@@ -25,8 +25,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 /**
@@ -426,8 +426,10 @@ public class SysMenuServiceImpl implements SysMenuService {
      * @return 菜单列表
      */
     public List<SysMenu> getChildPerms(List<SysMenu> menuList) {
-        Map<Long, List<SysMenu>> childMap = menuList.stream().collect(Collectors.groupingBy(SysMenu::getParentId));
-        return menuList.stream().filter(item -> {
+        ConcurrentMap<Long, List<SysMenu>> childMap = menuList.parallelStream()
+                .collect(Collectors.groupingByConcurrent(SysMenu::getParentId));
+        // Map<Long, List<SysMenu>> childMap = menuList.stream().collect(Collectors.groupingBy(SysMenu::getParentId));
+        return menuList.parallelStream().filter(item -> {
             item.setChildren(childMap.get(item.getMenuId()));
             return childMap.get(item.getParentId()) != null;
         }).collect(Collectors.toList());
