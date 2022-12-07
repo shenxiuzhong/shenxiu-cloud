@@ -22,11 +22,12 @@ import site.shenxiu.system.service.SysMenuService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 /**
@@ -426,13 +427,19 @@ public class SysMenuServiceImpl implements SysMenuService {
      * @return 菜单列表
      */
     public List<SysMenu> getChildPerms(List<SysMenu> menuList) {
-        ConcurrentMap<Long, List<SysMenu>> childMap = menuList.parallelStream()
-                .collect(Collectors.groupingByConcurrent(SysMenu::getParentId));
-        // Map<Long, List<SysMenu>> childMap = menuList.stream().collect(Collectors.groupingBy(SysMenu::getParentId));
-        return menuList.parallelStream().filter(item -> {
-            item.setChildren(childMap.get(item.getMenuId()));
-            return childMap.get(item.getParentId()) != null;
-        }).collect(Collectors.toList());
+        Map<Long, List<SysMenu>> childMap = new HashMap<>(menuList.size());
+        Set<Long> parentSet = new HashSet<>(menuList.size());
+        menuList.forEach(menu -> {
+            parentSet.add(menu.getMenuId());
+            //兄弟列表
+            List<SysMenu> brotherList = childMap.computeIfAbsent(menu.getParentId(), k -> new ArrayList<>());
+            brotherList.add(menu);
+            childMap.put(menu.getParentId(), brotherList);
+            //孩子列表
+            List<SysMenu> childList = childMap.computeIfAbsent(menu.getMenuId(), k -> new ArrayList<>());
+            menu.setChildren(childList);
+        });
+        return menuList.stream().filter(item -> !parentSet.contains(item.getParentId())).collect(Collectors.toList());
     }
 
 }
