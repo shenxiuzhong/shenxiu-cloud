@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.system.domain.SysConfig;
@@ -25,7 +25,7 @@ public interface SysConfigApi {
      * @return 分页数据对象
      */
     @GetMapping("/getPage")
-    R<PageData<SysConfig>> getPage(SysConfig config, PageQuery pageQuery);
+    ResEntity<PageData<SysConfig>> getPage(SysConfig config, PageQuery pageQuery);
 
     /**
      * 导出参数配置
@@ -40,7 +40,7 @@ public interface SysConfigApi {
      * @return 参数配置对象
      */
     @GetMapping(value = "/{configId}")
-    R<SysConfig> getInfo(@PathVariable Long configId);
+    ResEntity<SysConfig> getInfo(@PathVariable Long configId);
 
     /**
      * 根据参数键名查询参数值
@@ -49,7 +49,7 @@ public interface SysConfigApi {
      * @return 参数值
      */
     @GetMapping(value = "/getConfigKey/{configKey}")
-    R<String> getConfigKey(@PathVariable String configKey);
+    ResEntity<String> getConfigKey(@PathVariable String configKey);
 
     /**
      * 新增参数配置
@@ -57,7 +57,7 @@ public interface SysConfigApi {
      * @return 响应对象
      */
     @PostMapping(value = "/add")
-    R<Void> add(@Validated @RequestBody SysConfig config);
+    ResEntity<Void> add(@Validated @RequestBody SysConfig config);
 
     /**
      * 修改参数配置
@@ -65,7 +65,7 @@ public interface SysConfigApi {
      * @return 响应对象
      */
     @PostMapping(value = "/edit")
-    R<Void> edit(@Validated @RequestBody SysConfig config);
+    ResEntity<Void> edit(@Validated @RequestBody SysConfig config);
 
     /**
      * 根据参数键名修改参数配置
@@ -73,7 +73,7 @@ public interface SysConfigApi {
      * @return 响应对象
      */
     @PostMapping(value = "/updateByKey")
-    R<Void> updateByKey(@RequestBody SysConfig config);
+    ResEntity<Void> updateByKey(@RequestBody SysConfig config);
 
     /**
      * 删除参数配置
@@ -82,12 +82,12 @@ public interface SysConfigApi {
      * @return 响应对象
      */
     @PostMapping("/remove")
-    R<Void> remove(@RequestBody Long[] configIds);
+    ResEntity<Void> remove(@RequestBody Long[] configIds);
 
     /**
      * 刷新参数缓存
      * @return 响应对象
      */
     @GetMapping("/refreshCache")
-    R<Void> refreshCache();
+    ResEntity<Void> refreshCache();
 }

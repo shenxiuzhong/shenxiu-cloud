@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.system.domain.SysDictData;
@@ -28,7 +28,7 @@ public interface SysDictDataApi {
      * @return 分页对象
      */
     @GetMapping("/getPage")
-    R<PageData<SysDictData>> getPage(SysDictData dictData, PageQuery pageQuery);
+    ResEntity<PageData<SysDictData>> getPage(SysDictData dictData, PageQuery pageQuery);
 
     /**
      * 导出字典数据列表
@@ -45,7 +45,7 @@ public interface SysDictDataApi {
      * @return 字典数据
      */
     @GetMapping(value = "/{dictDataId}")
-    R<SysDictData> getInfo(@PathVariable Long dictDataId);
+    ResEntity<SysDictData> getInfo(@PathVariable Long dictDataId);
 
     /**
      * 根据字典类型查询字典数据信息
@@ -54,7 +54,7 @@ public interface SysDictDataApi {
      * @return 字典数据列表
      */
     @GetMapping(value = "/type/{dictType}")
-    R<List<SysDictData>> dictType(@PathVariable String dictType);
+    ResEntity<List<SysDictData>> dictType(@PathVariable String dictType);
 
     /**
      * 新增字典数据
@@ -63,7 +63,7 @@ public interface SysDictDataApi {
      * @return 响应对象
      */
     @PostMapping(value = "/add")
-    R<Void> add(@Validated @RequestBody SysDictData dict);
+    ResEntity<Void> add(@Validated @RequestBody SysDictData dict);
 
 
     /**
@@ -73,7 +73,7 @@ public interface SysDictDataApi {
      * @return 响应对象
      */
     @PostMapping(value = "/edit")
-    R<Void> edit(@Validated @RequestBody SysDictData dict);
+    ResEntity<Void> edit(@Validated @RequestBody SysDictData dict);
 
     /**
      * 删除字典类型
@@ -82,5 +82,5 @@ public interface SysDictDataApi {
      * @return 响应对象
      */
     @PostMapping("/remove")
-    R<Void> remove(@RequestBody Long[] dictDataIds);
+    ResEntity<Void> remove(@RequestBody Long[] dictDataIds);
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.system.domain.SysMenu;
 import site.shenxiu.system.domain.vo.RouterVo;
 
@@ -29,7 +29,7 @@ public interface SysMenuApi {
      */
 //    @SaCheckPermission("system:menu:list")
     @GetMapping("/list")
-    R<List<SysMenu>> list(SysMenu menu);
+    ResEntity<List<SysMenu>> list(SysMenu menu);
 
     /**
      * 一级菜单列表
@@ -37,7 +37,7 @@ public interface SysMenuApi {
      * @return 列表
      */
     @GetMapping("/dirMenuList")
-    R<List<SysMenu>> dirMenuList(SysMenu menu);
+    ResEntity<List<SysMenu>> dirMenuList(SysMenu menu);
 
     /**
      * 根据菜单编号获取详细信息
@@ -47,7 +47,7 @@ public interface SysMenuApi {
      */
 //    @SaCheckPermission("system:menu:query")
     @GetMapping(value = "/{menuId}")
-    R<SysMenu> getInfo(@PathVariable Long menuId);
+    ResEntity<SysMenu> getInfo(@PathVariable Long menuId);
 
     /**
      * 获取菜单下拉树列表
@@ -55,7 +55,7 @@ public interface SysMenuApi {
      * @return 树数据
      */
     @GetMapping("/treeselect")
-    R<List<Tree<Long>>> treeselect(SysMenu menu);
+    ResEntity<List<Tree<Long>>> treeselect(SysMenu menu);
 
     /**
      * 加载对应角色菜单列表树
@@ -64,7 +64,7 @@ public interface SysMenuApi {
      * @return  角色菜单列表树
      */
     @GetMapping(value = "/roleMenuTreeselect/{roleId}")
-    R<Map<String, Object>> roleMenuTreeselect(@PathVariable("roleId") Long roleId);
+    ResEntity<Map<String, Object>> roleMenuTreeselect(@PathVariable("roleId") Long roleId);
 
     /**
      * 新增菜单
@@ -74,7 +74,7 @@ public interface SysMenuApi {
 //    @SaCheckPermission("system:menu:add")
 //    @Log(title = "菜单管理", businessType = BusinessType.INSERT)
     @PostMapping(value = "/add")
-    R<Void> add(@Validated @RequestBody SysMenu menu);
+    ResEntity<Void> add(@Validated @RequestBody SysMenu menu);
 
     /**
      * 修改菜单
@@ -84,7 +84,7 @@ public interface SysMenuApi {
 //    @SaCheckPermission("system:menu:edit")
 //    @Log(title = "菜单管理", businessType = BusinessType.UPDATE)
     @PostMapping(value = "/edit")
-    R<Void> edit(@Validated @RequestBody SysMenu menu);
+    ResEntity<Void> edit(@Validated @RequestBody SysMenu menu);
 
     /**
      * 删除菜单
@@ -95,7 +95,7 @@ public interface SysMenuApi {
 //    @SaCheckPermission("system:menu:remove")
 //    @Log(title = "菜单管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove/{menuId}")
-    R<Void> remove(@RequestBody Long menuId);
+    ResEntity<Void> remove(@RequestBody Long menuId);
 
     /**
      * 获取路由信息
@@ -103,5 +103,5 @@ public interface SysMenuApi {
      * @return 路由信息
      */
     @GetMapping("/getRouters")
-    R<List<RouterVo>> getRouters();
+    ResEntity<List<RouterVo>> getRouters();
 }

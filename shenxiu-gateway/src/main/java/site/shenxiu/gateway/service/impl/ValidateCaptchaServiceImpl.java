@@ -7,7 +7,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.ReflectUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.utils.SpringUtils;
 import site.shenxiu.gateway.config.properties.CaptchaProperties;
 import site.shenxiu.gateway.enums.CaptchaType;
@@ -33,12 +33,12 @@ public class ValidateCaptchaServiceImpl implements ValidateCaptchaService {
      * 生成验证码
      */
     @Override
-    public R<Map<String, Object>> createCaptcha() throws CaptchaException {
+    public ResEntity<Map<String, Object>> createCaptcha() throws CaptchaException {
         Map<String, Object> ajax = new HashMap<>();
         boolean captchaEnabled = captchaProperties.getEnabled();
         ajax.put("captchaEnabled", captchaEnabled);
         if (!captchaEnabled) {
-            return R.success(ajax);
+            return ResEntity.success(ajax);
         }
 
         // 保存验证码信息
@@ -56,7 +56,7 @@ public class ValidateCaptchaServiceImpl implements ValidateCaptchaService {
        // RedisUtils.setCacheObject(verifyKey, code, Duration.ofMinutes(Constants.CAPTCHA_EXPIRATION));
         ajax.put("uuid", uuid);
         ajax.put("img", captcha.getImageBase64());
-        return R.success(ajax);
+        return ResEntity.success(ajax);
     }
 
     private String getCodeResult(String capStr) {

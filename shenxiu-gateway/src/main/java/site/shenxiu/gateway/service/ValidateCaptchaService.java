@@ -1,6 +1,6 @@
 package site.shenxiu.gateway.service;
 
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.gateway.exception.CaptchaException;
 
 import java.util.Map;
@@ -16,7 +16,7 @@ public interface ValidateCaptchaService {
      * @return 响应
      * @throws CaptchaException 验证异常
      */
-    R<Map<String, Object>> createCaptcha() throws CaptchaException;
+    ResEntity<Map<String, Object>> createCaptcha() throws CaptchaException;
 
     /**
      * 校验验证码

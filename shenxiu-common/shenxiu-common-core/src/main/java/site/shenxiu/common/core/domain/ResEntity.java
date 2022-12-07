@@ -14,7 +14,8 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-public class R<T> implements Serializable {
+public class ResEntity<T> implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -48,7 +49,7 @@ public class R<T> implements Serializable {
      * @param <T> 泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> success() {
+    public static <T> ResEntity<T> success() {
         return restResult(null, SUCCESS, "操作成功");
     }
 
@@ -59,7 +60,7 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> success(T data) {
+    public static <T> ResEntity<T> success(T data) {
         return restResult(data, SUCCESS, "操作成功");
     }
 
@@ -70,7 +71,7 @@ public class R<T> implements Serializable {
      * @param <T> 泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> success(String msg) {
+    public static <T> ResEntity<T> success(String msg) {
         return restResult(null, SUCCESS, msg);
     }
 
@@ -82,7 +83,7 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> success(String msg, T data) {
+    public static <T> ResEntity<T> success(String msg, T data) {
         return restResult(data, SUCCESS, msg);
     }
 
@@ -92,7 +93,7 @@ public class R<T> implements Serializable {
      * @param <T> 泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> fail() {
+    public static <T> ResEntity<T> fail() {
         return restResult(null, FAIL, "操作失败");
     }
 
@@ -103,7 +104,7 @@ public class R<T> implements Serializable {
      * @param <T> 泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> fail(String msg) {
+    public static <T> ResEntity<T> fail(String msg) {
         return restResult(null, FAIL, msg);
     }
 
@@ -115,7 +116,7 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> fail(T data) {
+    public static <T> ResEntity<T> fail(T data) {
         return restResult(data, FAIL, "操作失败");
     }
 
@@ -127,7 +128,7 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> fail(String msg, T data) {
+    public static <T> ResEntity<T> fail(String msg, T data) {
         return restResult(data, FAIL, msg);
     }
 
@@ -139,7 +140,7 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return 响应信息
      */
-    public static <T> R<T> fail(int code, String msg) {
+    public static <T> ResEntity<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
 
@@ -152,12 +153,12 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return R
      */
-    private static <T> R<T> restResult(T data, int code, String msg) {
-        R<T> r = new R<>();
-        r.setCode(code);
-        r.setData(data);
-        r.setMsg(msg);
-        return r;
+    private static <T> ResEntity<T> restResult(T data, int code, String msg) {
+        ResEntity<T> resEntity = new ResEntity<>();
+        resEntity.setCode(code);
+        resEntity.setData(data);
+        resEntity.setMsg(msg);
+        return resEntity;
     }
 
     /**
@@ -167,8 +168,8 @@ public class R<T> implements Serializable {
      * @param <T>  泛型参数
      * @return 操作结果
      */
-    public static <T> R<T> toAjax(int rows) {
-        return rows > 0 ? R.success() : R.fail();
+    public static <T> ResEntity<T> toAjax(int rows) {
+        return rows > 0 ? ResEntity.success() : ResEntity.fail();
     }
 
     /**
@@ -178,8 +179,8 @@ public class R<T> implements Serializable {
      * @param <T>    泛型参数
      * @return 操作结果
      */
-    public static <T> R<T> toAjax(boolean result) {
-        return result ? R.success() : R.fail();
+    public static <T> ResEntity<T> toAjax(boolean result) {
+        return result ? ResEntity.success() : ResEntity.fail();
     }
 
 }

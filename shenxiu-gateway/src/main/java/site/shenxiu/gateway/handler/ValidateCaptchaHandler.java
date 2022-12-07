@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.gateway.exception.CaptchaException;
 import site.shenxiu.gateway.service.ValidateCaptchaService;
 
@@ -27,7 +27,7 @@ public class ValidateCaptchaHandler implements HandlerFunction<ServerResponse> {
 
     @Override
     public Mono<ServerResponse> handle(ServerRequest serverRequest) {
-        R<Map<String, Object>> ajax;
+        ResEntity<Map<String, Object>> ajax;
         try {
             ajax = validateCaptchaService.createCaptcha();
         } catch (CaptchaException e) {

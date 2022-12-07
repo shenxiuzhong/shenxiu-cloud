@@ -7,7 +7,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.exception.BusinessException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,11 +28,11 @@ public class GlobalExceptionHandler {
      * @return 错误响应
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public R<Void> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e,
-                                                       HttpServletRequest request) {
+    public ResEntity<Void> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e,
+                                                               HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',不支持'{}'请求", requestURI, e.getMethod());
-        return R.fail(e.getMessage());
+        return ResEntity.fail(e.getMessage());
     }
 
     /**
@@ -42,12 +42,12 @@ public class GlobalExceptionHandler {
      * @return 错误响应
      */
     @ExceptionHandler(BusinessException.class)
-    public R<Void> handleServiceException(BusinessException e, HttpServletRequest request) {
+    public ResEntity<Void> handleServiceException(BusinessException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生未知异常.", requestURI, e);
         log.error(e.getMessage(), e);
         Integer code = e.getCode();
-        return ObjectUtil.isNotNull(code) ? R.fail(code, e.getMessage()) : R.fail(e.getMessage());
+        return ObjectUtil.isNotNull(code) ? ResEntity.fail(code, e.getMessage()) : ResEntity.fail(e.getMessage());
     }
 
     /**
@@ -57,10 +57,10 @@ public class GlobalExceptionHandler {
      * @return 错误响应
      */
     @ExceptionHandler(RuntimeException.class)
-    public R<Void> handleRuntimeException(RuntimeException e, HttpServletRequest request) {
+    public ResEntity<Void> handleRuntimeException(RuntimeException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生未知异常.", requestURI, e);
-        return R.fail(e.getMessage());
+        return ResEntity.fail(e.getMessage());
     }
 
     /**
@@ -70,10 +70,10 @@ public class GlobalExceptionHandler {
      * @return 错误响应
      */
     @ExceptionHandler(Exception.class)
-    public R<Void> handleException(Exception e, HttpServletRequest request) {
+    public ResEntity<Void> handleException(Exception e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生系统异常.", requestURI, e);
-        return R.fail(e.getMessage());
+        return ResEntity.fail(e.getMessage());
     }
 
     /**
@@ -82,10 +82,10 @@ public class GlobalExceptionHandler {
      * @return 错误响应
      */
     @ExceptionHandler(BindException.class)
-    public R<Void> handleBindException(BindException e) {
+    public ResEntity<Void> handleBindException(BindException e) {
         log.error(e.getMessage(), e);
         String message = e.getAllErrors().get(0).getDefaultMessage();
-        return R.fail(message);
+        return ResEntity.fail(message);
     }
 
     /**
@@ -94,9 +94,9 @@ public class GlobalExceptionHandler {
      * @return 错误响应
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public R<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResEntity<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
         String message = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
-        return R.fail(message);
+        return ResEntity.fail(message);
     }
 }

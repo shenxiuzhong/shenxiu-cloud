@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 import site.shenxiu.common.core.constant.HttpStatus;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
@@ -40,7 +40,7 @@ public class ShenXiuFeignFallback<T> implements MethodInterceptor {
             //告警代码实现 ......
             //此处只是示例,具体可以返回带有业务错误数据的对象
 
-            return R.fail(HttpStatus.ERROR,cause.getMessage());
+            return ResEntity.fail(HttpStatus.ERROR,cause.getMessage());
         }else{
             //非feign异常
 

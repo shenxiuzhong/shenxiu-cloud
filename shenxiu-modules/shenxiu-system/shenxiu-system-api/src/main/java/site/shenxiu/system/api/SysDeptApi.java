@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.system.domain.SysDept;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public interface SysDeptApi {
      * @return 列表数据
      */
     @GetMapping("/list")
-    R<List<SysDept>> list(SysDept dept) ;
+    ResEntity<List<SysDept>> list(SysDept dept) ;
 
     /**
      * 查询部门列表（排除节点）
@@ -33,7 +33,7 @@ public interface SysDeptApi {
      * @return 列表数据
      */
     @GetMapping("/list/exclude/{deptId}")
-    R<List<SysDept>> excludeChild(@PathVariable(value = "deptId", required = false) Long deptId);
+    ResEntity<List<SysDept>> excludeChild(@PathVariable(value = "deptId", required = false) Long deptId);
 
     /**
      * 根据部门编号获取详细信息
@@ -42,7 +42,7 @@ public interface SysDeptApi {
      * @return 部门数据
      */
     @GetMapping(value = "/{deptId}")
-    R<SysDept> getInfo(@PathVariable Long deptId);
+    ResEntity<SysDept> getInfo(@PathVariable Long deptId);
 
     /**
      * 新增部门
@@ -50,7 +50,7 @@ public interface SysDeptApi {
      * @return 响应对象
      */
     @PostMapping(value = "/add")
-    R<Void> add(@Validated @RequestBody SysDept dept);
+    ResEntity<Void> add(@Validated @RequestBody SysDept dept);
 
     /**
      * 修改部门
@@ -58,7 +58,7 @@ public interface SysDeptApi {
      * @return 响应对象
      */
     @PostMapping(value = "/edit")
-    R<Void> edit(@Validated @RequestBody SysDept dept) ;
+    ResEntity<Void> edit(@Validated @RequestBody SysDept dept) ;
 
     /**
      * 删除部门
@@ -66,5 +66,5 @@ public interface SysDeptApi {
      * @return 响应对象
      */
     @PostMapping("/remove/{deptId}")
-    R<Void> remove(@PathVariable Long deptId) ;
+    ResEntity<Void> remove(@PathVariable Long deptId) ;
 }

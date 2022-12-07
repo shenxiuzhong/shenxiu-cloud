@@ -3,7 +3,7 @@ package site.shenxiu.system.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.common.web.controller.BaseController;
@@ -26,8 +26,8 @@ public class SysDictDataController extends BaseController implements SysDictData
     private final SysDictDataService sysDictDataService;
 
     @Override
-    public R<PageData<SysDictData>> getPage(SysDictData dictData, PageQuery pageQuery) {
-        return R.success(sysDictDataService.selectPageDictDataList(dictData,pageQuery));
+    public ResEntity<PageData<SysDictData>> getPage(SysDictData dictData, PageQuery pageQuery) {
+        return ResEntity.success(sysDictDataService.selectPageDictDataList(dictData,pageQuery));
     }
 
     @Override
@@ -36,30 +36,30 @@ public class SysDictDataController extends BaseController implements SysDictData
     }
 
     @Override
-    public R<SysDictData> getInfo(Long dictDataId) {
-        return R.success(sysDictDataService.selectDictDataById(dictDataId));
+    public ResEntity<SysDictData> getInfo(Long dictDataId) {
+        return ResEntity.success(sysDictDataService.selectDictDataById(dictDataId));
     }
 
     @Override
-    public R<List<SysDictData>> dictType(String dictType) {
-        return R.success(sysDictDataService.selectDictDataByType(dictType));
+    public ResEntity<List<SysDictData>> dictType(String dictType) {
+        return ResEntity.success(sysDictDataService.selectDictDataByType(dictType));
     }
 
     @Override
-    public R<Void> add(SysDictData dict) {
+    public ResEntity<Void> add(SysDictData dict) {
         sysDictDataService.insertDictData(dict);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> edit(SysDictData dict) {
+    public ResEntity<Void> edit(SysDictData dict) {
         sysDictDataService.updateDictData(dict);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> remove(Long[] dictDataIds) {
+    public ResEntity<Void> remove(Long[] dictDataIds) {
         sysDictDataService.deleteDictDataByIds(dictDataIds);
-        return R.success();
+        return ResEntity.success();
     }
 }

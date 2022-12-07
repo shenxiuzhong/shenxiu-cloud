@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import site.shenxiu.common.core.constant.SystemConstants;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.web.controller.BaseController;
 import site.shenxiu.system.api.SysMenuApi;
 import site.shenxiu.system.domain.SysMenu;
@@ -29,54 +29,54 @@ public class SysMenuController extends BaseController implements SysMenuApi {
     private final SysMenuService sysMenuService;
 
     @Override
-    public R<List<SysMenu>> list(SysMenu menu) {
+    public ResEntity<List<SysMenu>> list(SysMenu menu) {
         Long userId = null;//LoginHelper.getUserId();
         List<SysMenu> menus = sysMenuService.selectMenuList(menu, userId);
-        return R.success(menus);
+        return ResEntity.success(menus);
     }
 
     @Override
-    public R<List<SysMenu>> dirMenuList(SysMenu menu) {
+    public ResEntity<List<SysMenu>> dirMenuList(SysMenu menu) {
         menu.setMenuType(SystemConstants.TYPE_DIR);
         return null;
     }
 
     @Override
-    public R<SysMenu> getInfo(Long menuId) {
-        return R.success(sysMenuService.selectMenuById(menuId));
+    public ResEntity<SysMenu> getInfo(Long menuId) {
+        return ResEntity.success(sysMenuService.selectMenuById(menuId));
     }
 
     @Override
-    public R<List<Tree<Long>>> treeselect(SysMenu menu) {
+    public ResEntity<List<Tree<Long>>> treeselect(SysMenu menu) {
         return null;
     }
 
     @Override
-    public R<Map<String, Object>> roleMenuTreeselect(Long roleId) {
+    public ResEntity<Map<String, Object>> roleMenuTreeselect(Long roleId) {
         return null;
     }
 
     @Override
-    public R<Void> add(SysMenu menu) {
+    public ResEntity<Void> add(SysMenu menu) {
         sysMenuService.insertMenu(menu);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> edit(SysMenu menu) {
+    public ResEntity<Void> edit(SysMenu menu) {
         sysMenuService.updateMenu(menu);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> remove(Long menuId) {
+    public ResEntity<Void> remove(Long menuId) {
         return null;
     }
 
     @Override
-    public R<List<RouterVo>> getRouters() {
+    public ResEntity<List<RouterVo>> getRouters() {
         //Long userId = LoginHelper.getUserId();
         List<SysMenu> menus = sysMenuService.selectMenuTreeByUserId(null);
-        return R.success(sysMenuService.buildMenus(menus));
+        return ResEntity.success(sysMenuService.buildMenus(menus));
     }
 }

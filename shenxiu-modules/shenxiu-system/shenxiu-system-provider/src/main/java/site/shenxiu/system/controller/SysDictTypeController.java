@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import site.shenxiu.common.core.constant.SystemConstants;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.common.web.controller.BaseController;
@@ -28,8 +28,8 @@ public class SysDictTypeController extends BaseController implements SysDictType
 
 
     @Override
-    public R<PageData<SysDictType>> getPage(SysDictType dictType, PageQuery pageQuery) {
-        return R.success(sysDictTypeService.selectPageDictTypeList(dictType, pageQuery));
+    public ResEntity<PageData<SysDictType>> getPage(SysDictType dictType, PageQuery pageQuery) {
+        return ResEntity.success(sysDictTypeService.selectPageDictTypeList(dictType, pageQuery));
     }
 
     @Override
@@ -38,41 +38,41 @@ public class SysDictTypeController extends BaseController implements SysDictType
     }
 
     @Override
-    public R<SysDictType> getInfo(Long dictId) {
-        return R.success(sysDictTypeService.selectDictTypeById(dictId));
+    public ResEntity<SysDictType> getInfo(Long dictId) {
+        return ResEntity.success(sysDictTypeService.selectDictTypeById(dictId));
     }
 
     @Override
-    public R<Void> add(SysDictType dict) {
+    public ResEntity<Void> add(SysDictType dict) {
         if (SystemConstants.NOT_UNIQUE.equals(sysDictTypeService.checkDictTypeUnique(dict))) {
-            return R.fail("新增字典'" + dict.getDictName() + "'失败，字典类型已存在");
+            return ResEntity.fail("新增字典'" + dict.getDictName() + "'失败，字典类型已存在");
         }
         sysDictTypeService.insertDictType(dict);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> edit(SysDictType dict) {
+    public ResEntity<Void> edit(SysDictType dict) {
         if (SystemConstants.NOT_UNIQUE.equals(sysDictTypeService.checkDictTypeUnique(dict))) {
-            return R.fail("修改字典'" + dict.getDictName() + "'失败，字典类型已存在");
+            return ResEntity.fail("修改字典'" + dict.getDictName() + "'失败，字典类型已存在");
         }
         sysDictTypeService.updateDictType(dict);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> remove(Long[] dictIds) {
+    public ResEntity<Void> remove(Long[] dictIds) {
         sysDictTypeService.deleteDictTypeByIds(dictIds);
-        return R.success();
+        return ResEntity.success();
     }
 
     @Override
-    public R<Void> refreshCache() {
+    public ResEntity<Void> refreshCache() {
         return null;
     }
 
     @Override
-    public R<List<SysDictType>> optionselect() {
+    public ResEntity<List<SysDictType>> optionselect() {
         return null;
     }
 }

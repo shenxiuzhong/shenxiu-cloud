@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import reactor.core.publisher.Mono;
 import site.shenxiu.common.core.constant.HttpStatus;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 
 import java.nio.charset.StandardCharsets;
 
@@ -67,7 +67,7 @@ public class WebFluxUtils {
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, String contentType, Integer statusCode, Object msg) {
         response.setRawStatusCode(statusCode);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, contentType);
-        R<?> result = R.fail(statusCode, msg.toString());
+        ResEntity<?> result = ResEntity.fail(statusCode, msg.toString());
         Gson gson = new GsonBuilder().create();
         DataBuffer dataBuffer = response.bufferFactory().wrap(gson.toJson(result).getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Mono.just(dataBuffer));
