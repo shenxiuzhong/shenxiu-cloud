@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.system.domain.SysRole;
@@ -33,7 +33,7 @@ public interface SysRoleApi {
      */
 //    @SaCheckPermission("system:role:list")
     @GetMapping("/list")
-    R<PageData<SysRole>> list(SysRole role, PageQuery pageQuery);
+    ResEntity<PageData<SysRole>> list(SysRole role, PageQuery pageQuery);
 
     /**
      * 导出角色信息列表
@@ -44,7 +44,7 @@ public interface SysRoleApi {
 //    @Log(title = "角色管理", businessType = BusinessType.EXPORT)
 //    @SaCheckPermission("system:role:export")
     @PostMapping("/export")
-    R<Void> export(SysRole role);
+    ResEntity<Void> export(SysRole role);
 
     /**
      * 根据角色编号获取详细信息
@@ -54,7 +54,7 @@ public interface SysRoleApi {
      */
 //    @SaCheckPermission("system:role:query")
     @GetMapping(value = "/{roleId}")
-    R<SysRole> getInfo(@PathVariable Long roleId);
+    ResEntity<SysRole> getInfo(@PathVariable Long roleId);
 
     /**
      * 新增角色
@@ -65,7 +65,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:add")
 //    @Log(title = "角色管理", businessType = BusinessType.INSERT)
     @PostMapping(value = "/add")
-    R<Void> add(@Validated @RequestBody SysRole role);
+    ResEntity<Void> add(@Validated @RequestBody SysRole role);
 
     /**
      * 修改保存角色
@@ -76,7 +76,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:edit")
 //    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PostMapping(value = "/edit")
-    R<Void> edit(@Validated @RequestBody SysRole role);
+    ResEntity<Void> edit(@Validated @RequestBody SysRole role);
 
     /**
      * 修改保存数据权限
@@ -87,7 +87,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:edit")
 //    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PostMapping("/dataScope")
-    R<Void> dataScope(@RequestBody SysRole role);
+    ResEntity<Void> dataScope(@RequestBody SysRole role);
 
     /**
      * 状态修改
@@ -98,7 +98,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:edit")
 //    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PostMapping("/changeStatus")
-    R<Void> changeStatus(@RequestBody SysRole role);
+    ResEntity<Void> changeStatus(@RequestBody SysRole role);
 
     /**
      * 删除角色
@@ -109,7 +109,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:remove")
 //    @Log(title = "角色管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove/{roleIds}")
-    R<Void> remove(@RequestBody Long[] roleIds);
+    ResEntity<Void> remove(@RequestBody Long[] roleIds);
 
     /**
      * 获取角色选择框列表
@@ -118,7 +118,7 @@ public interface SysRoleApi {
      */
 //    @SaCheckPermission("system:role:query")
     @GetMapping("/optionselect")
-    R<List<SysRole>> optionselect();
+    ResEntity<List<SysRole>> optionselect();
 
     /**
      * 查询已分配用户角色列表
@@ -129,7 +129,7 @@ public interface SysRoleApi {
      */
 //    @SaCheckPermission("system:role:list")
     @GetMapping("/authUser/allocatedList")
-    R<PageData<SysUser>> allocatedList(SysUser user, PageQuery pageQuery);
+    ResEntity<PageData<SysUser>> allocatedList(SysUser user, PageQuery pageQuery);
 
     /**
      * 查询未分配用户角色列表
@@ -140,7 +140,7 @@ public interface SysRoleApi {
      */
 //    @SaCheckPermission("system:role:list")
     @GetMapping("/authUser/unallocatedList")
-    R<PageData<SysUser>> unallocatedList(SysUser user, PageQuery pageQuery);
+    ResEntity<PageData<SysUser>> unallocatedList(SysUser user, PageQuery pageQuery);
 
     /**
      * 取消授权用户
@@ -151,7 +151,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:edit")
 //    @Log(title = "角色管理", businessType = BusinessType.GRANT)
     @PostMapping("/authUser/cancel")
-    R<Void> cancelAuthUser(@RequestBody SysUserRole userRole);
+    ResEntity<Void> cancelAuthUser(@RequestBody SysUserRole userRole);
 
     /**
      * 批量取消授权用户
@@ -163,7 +163,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:edit")
 //    @Log(title = "角色管理", businessType = BusinessType.GRANT)
     @PostMapping("/authUser/cancelAll")
-    R<Void> cancelAuthUserAll(Long roleId, Long[] userIds);
+    ResEntity<Void> cancelAuthUserAll(Long roleId, Long[] userIds);
 
     /**
      * 批量选择用户授权
@@ -175,7 +175,7 @@ public interface SysRoleApi {
 //    @SaCheckPermission("system:role:edit")
 //    @Log(title = "角色管理", businessType = BusinessType.GRANT)
     @PostMapping("/authUser/selectAll")
-    R<Void> selectAuthUserAll(Long roleId, Long[] userIds);
+    ResEntity<Void> selectAuthUserAll(Long roleId, Long[] userIds);
 
     /**
      * 获取对应角色部门树列表
@@ -185,5 +185,5 @@ public interface SysRoleApi {
      */
 //    @SaCheckPermission("system:role:query")
     @GetMapping(value = "/deptTree/{roleId}")
-    R<Map<String, Object>> deptTree(@PathVariable("roleId") Long roleId);
+    ResEntity<Map<String, Object>> deptTree(@PathVariable("roleId") Long roleId);
 }

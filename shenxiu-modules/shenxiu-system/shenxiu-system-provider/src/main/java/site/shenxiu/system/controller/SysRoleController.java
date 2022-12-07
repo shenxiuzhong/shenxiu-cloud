@@ -3,7 +3,7 @@ package site.shenxiu.system.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import site.shenxiu.common.core.domain.R;
+import site.shenxiu.common.core.domain.ResEntity;
 import site.shenxiu.common.core.page.PageData;
 import site.shenxiu.common.core.page.PageQuery;
 import site.shenxiu.common.web.controller.BaseController;
@@ -29,77 +29,79 @@ public class SysRoleController extends BaseController implements SysRoleApi {
     private final SysRoleService sysRoleService;
 
     @Override
-    public R<PageData<SysRole>> list(SysRole role, PageQuery pageQuery) {
+    public ResEntity<PageData<SysRole>> list(SysRole role, PageQuery pageQuery) {
+        PageData<SysRole> sysRolePageData = sysRoleService.selectPageRoleList(role, pageQuery);
+        return ResEntity.success(sysRolePageData);
+    }
+
+    @Override
+    public ResEntity<Void> export(SysRole role) {
         return null;
     }
 
     @Override
-    public R<Void> export(SysRole role) {
+    public ResEntity<SysRole> getInfo(Long roleId) {
+        return ResEntity.success(sysRoleService.selectRoleById(roleId));
+    }
+
+    @Override
+    public ResEntity<Void> add(SysRole role) {
+        sysRoleService.insertRole(role);
+        return ResEntity.success();
+    }
+
+    @Override
+    public ResEntity<Void> edit(SysRole role) {
         return null;
     }
 
     @Override
-    public R<SysRole> getInfo(Long roleId) {
+    public ResEntity<Void> dataScope(SysRole role) {
         return null;
     }
 
     @Override
-    public R<Void> add(SysRole role) {
+    public ResEntity<Void> changeStatus(SysRole role) {
         return null;
     }
 
     @Override
-    public R<Void> edit(SysRole role) {
+    public ResEntity<Void> remove(Long[] roleIds) {
         return null;
     }
 
     @Override
-    public R<Void> dataScope(SysRole role) {
+    public ResEntity<List<SysRole>> optionselect() {
         return null;
     }
 
     @Override
-    public R<Void> changeStatus(SysRole role) {
+    public ResEntity<PageData<SysUser>> allocatedList(SysUser user, PageQuery pageQuery) {
         return null;
     }
 
     @Override
-    public R<Void> remove(Long[] roleIds) {
+    public ResEntity<PageData<SysUser>> unallocatedList(SysUser user, PageQuery pageQuery) {
         return null;
     }
 
     @Override
-    public R<List<SysRole>> optionselect() {
+    public ResEntity<Void> cancelAuthUser(SysUserRole userRole) {
         return null;
     }
 
     @Override
-    public R<PageData<SysUser>> allocatedList(SysUser user, PageQuery pageQuery) {
+    public ResEntity<Void> cancelAuthUserAll(Long roleId, Long[] userIds) {
         return null;
     }
 
     @Override
-    public R<PageData<SysUser>> unallocatedList(SysUser user, PageQuery pageQuery) {
+    public ResEntity<Void> selectAuthUserAll(Long roleId, Long[] userIds) {
         return null;
     }
 
     @Override
-    public R<Void> cancelAuthUser(SysUserRole userRole) {
-        return null;
-    }
-
-    @Override
-    public R<Void> cancelAuthUserAll(Long roleId, Long[] userIds) {
-        return null;
-    }
-
-    @Override
-    public R<Void> selectAuthUserAll(Long roleId, Long[] userIds) {
-        return null;
-    }
-
-    @Override
-    public R<Map<String, Object>> deptTree(Long roleId) {
+    public ResEntity<Map<String, Object>> deptTree(Long roleId) {
         return null;
     }
 }
