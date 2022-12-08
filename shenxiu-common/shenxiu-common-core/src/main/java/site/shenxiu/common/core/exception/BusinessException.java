@@ -1,15 +1,11 @@
 package site.shenxiu.common.core.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 /**
  * 业务异常
  *
  * @author ShenXiu
  * @version 2022/11/24 13:23
  */
-@ResponseStatus(code = HttpStatus.VARIANT_ALSO_NEGOTIATES)
 public class BusinessException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
