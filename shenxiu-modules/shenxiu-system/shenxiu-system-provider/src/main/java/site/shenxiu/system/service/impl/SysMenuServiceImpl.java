@@ -1,8 +1,6 @@
 package site.shenxiu.system.service.impl;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Validator;
-import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.RequiredArgsConstructor;
@@ -138,7 +136,7 @@ public class SysMenuServiceImpl implements SysMenuService {
     public List<SysMenu> selectMenuTreeByUserId(Long userId) {
         List<SysMenu> menus = null;
         menus = this.selectMenuTreeAll();
-        return getChildPerms(menus);
+        return buildChildren(menus);
     }
 
     /**
@@ -204,24 +202,6 @@ public class SysMenuServiceImpl implements SysMenuService {
         return routers;
     }
 
-    /**
-     * 构建前端所需要下拉树结构
-     *
-     * @param menus 菜单列表
-     * @return 下拉树结构列表
-     */
-    @Override
-    public List<Tree<Long>> buildMenuTreeSelect(List<SysMenu> menus) {
-        if (CollUtil.isEmpty(menus)) {
-            return CollUtil.newArrayList();
-        }
-        return null;
-//        return TreeBuildUtils.build(menus, (menu, tree) ->
-//                tree.setId(menu.getMenuId())
-//                        .setParentId(menu.getParentId())
-//                        .setName(menu.getMenuName())
-//                        .setWeight(menu.getOrderNum()));
-    }
 
     /**
      * 根据菜单ID查询信息
@@ -426,7 +406,7 @@ public class SysMenuServiceImpl implements SysMenuService {
      * @param menuList 菜单列表
      * @return 菜单列表
      */
-    public List<SysMenu> getChildPerms(List<SysMenu> menuList) {
+    public List<SysMenu> buildChildren(List<SysMenu> menuList) {
         Map<Long, List<SysMenu>> childMap = new HashMap<>(menuList.size());
         Set<Long> parentSet = new HashSet<>(menuList.size());
         menuList.forEach(menu -> {

@@ -18,6 +18,7 @@ import java.util.Map;
 
 /**
  * 角色处置类
+ *
  * @author ShenXiu
  * @version 2022/12/5 17:02
  */
@@ -52,7 +53,8 @@ public class SysRoleController extends BaseController implements SysRoleApi {
 
     @Override
     public ResEntity<Void> edit(SysRole role) {
-        return null;
+        sysRoleService.updateRole(role);
+        return ResEntity.success();
     }
 
     @Override

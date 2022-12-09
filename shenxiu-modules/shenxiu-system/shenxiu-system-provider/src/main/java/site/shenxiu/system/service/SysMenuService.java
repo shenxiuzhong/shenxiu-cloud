@@ -1,6 +1,5 @@
 package site.shenxiu.system.service;
 
-import cn.hutool.core.lang.tree.Tree;
 import site.shenxiu.system.domain.SysMenu;
 import site.shenxiu.system.domain.vo.RouterVo;
 
@@ -71,13 +70,6 @@ public interface SysMenuService{
      */
     List<RouterVo> buildMenus(List<SysMenu> menus);
 
-    /**
-     * 构建前端所需要下拉树结构
-     *
-     * @param menus 菜单列表
-     * @return 下拉树结构列表
-     */
-    List<Tree<Long>> buildMenuTreeSelect(List<SysMenu> menus);
 
     /**
      * 根据菜单ID查询信息

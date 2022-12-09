@@ -1,6 +1,8 @@
 package site.shenxiu.system.controller;
 
 import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.lang.tree.TreeNodeConfig;
+import cn.hutool.core.lang.tree.TreeUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,8 +49,15 @@ public class SysMenuController extends BaseController implements SysMenuApi {
     }
 
     @Override
-    public ResEntity<List<Tree<Long>>> treeselect(SysMenu menu) {
-        return null;
+    public ResEntity<List<Tree<Long>>> treeselect(SysMenu sysMenu) {
+        //Long userId = LoginHelper.getUserId();
+        List<SysMenu> menus = sysMenuService.selectMenuList(sysMenu, null);
+        List<Tree<Long>> treeList = TreeUtil.build(menus, 0L, TreeNodeConfig.DEFAULT_CONFIG.setNameKey("label"), (menu, tree) ->
+                tree.setId(menu.getMenuId())
+                        .setParentId(menu.getParentId())
+                        .setName(menu.getMenuName())
+                        .setWeight(menu.getOrderNum()));
+        return ResEntity.success(treeList);
     }
 
     @Override
