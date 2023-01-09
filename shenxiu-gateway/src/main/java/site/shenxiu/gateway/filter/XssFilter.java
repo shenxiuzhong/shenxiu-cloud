@@ -31,7 +31,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * 跨站脚本过滤器
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/28 17:01
  */
 @Component

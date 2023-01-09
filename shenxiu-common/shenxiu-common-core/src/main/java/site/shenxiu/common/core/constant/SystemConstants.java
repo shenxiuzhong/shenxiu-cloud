@@ -2,7 +2,7 @@ package site.shenxiu.common.core.constant;
 
 /**
  * 系统常量
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/24 14:00
  */
 public interface SystemConstants {

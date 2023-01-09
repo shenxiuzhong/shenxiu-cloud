@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * 菜单按钮 处置类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/12/5 9:37
  */
 @RequiredArgsConstructor

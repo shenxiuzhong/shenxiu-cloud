@@ -10,7 +10,7 @@ import site.shenxiu.common.core.domain.BaseEntity;
 /**
  * 归属表，人员归属
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/30 13:14
  */
 @TableName(value ="sys_ascription")

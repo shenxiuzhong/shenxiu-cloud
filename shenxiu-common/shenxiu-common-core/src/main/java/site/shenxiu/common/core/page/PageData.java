@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 分页数据对象
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/6 20:27
  */
 @Data

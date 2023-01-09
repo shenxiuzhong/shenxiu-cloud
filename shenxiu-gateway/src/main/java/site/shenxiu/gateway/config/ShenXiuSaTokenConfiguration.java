@@ -11,7 +11,7 @@ import site.shenxiu.gateway.config.properties.IgnoreProperties;
 /**
  * Sa-Token 权限认证 全局配置类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/29 15:45
  */
 @Configuration

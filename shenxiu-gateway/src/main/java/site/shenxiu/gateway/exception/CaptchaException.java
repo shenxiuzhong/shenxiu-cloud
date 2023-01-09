@@ -4,7 +4,7 @@ import site.shenxiu.common.core.exception.BusinessException;
 
 /**
  * 验证码错误异常类
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/29 16:38
  */
 public class CaptchaException extends BusinessException {

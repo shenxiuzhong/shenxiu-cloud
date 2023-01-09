@@ -10,7 +10,7 @@ import javax.validation.ValidatorFactory;
 
 /**
  * 验证配置
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/12/1 16:35
  */
 @Configuration

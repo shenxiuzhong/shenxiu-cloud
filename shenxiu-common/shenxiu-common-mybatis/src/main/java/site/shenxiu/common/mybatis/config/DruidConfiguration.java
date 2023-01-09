@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * Druid连接池配置类
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/28 10:02
  */
 @ConditionalOnMissingBean(DataSource.class)

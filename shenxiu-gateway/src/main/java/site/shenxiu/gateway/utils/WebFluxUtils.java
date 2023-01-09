@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * WebFlux工具类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/28 17:33
  */
 public class WebFluxUtils {

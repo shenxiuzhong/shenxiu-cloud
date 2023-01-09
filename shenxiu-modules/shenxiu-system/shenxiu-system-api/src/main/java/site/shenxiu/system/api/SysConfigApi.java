@@ -13,7 +13,7 @@ import site.shenxiu.system.domain.SysConfig;
 /**
  * 系统参数配置API定义
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/23 14:13
  * @definition 参数配置api定义
  */

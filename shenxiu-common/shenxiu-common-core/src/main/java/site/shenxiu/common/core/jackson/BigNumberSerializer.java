@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * 数字 超出 JS 最大最小值 处理
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/2 21:14
  */
 @JacksonStdImpl

@@ -13,7 +13,7 @@ import site.shenxiu.gateway.utils.WebFluxUtils;
 
 /**
  * 网格全局异常处理
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/29 16:07
  */
 @Slf4j

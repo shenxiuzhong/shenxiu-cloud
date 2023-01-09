@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 数据字典类型 API定义
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/30 15:50
  * @definition 数据字典类型api定义
  */

@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * 操作日志记录表 oper_log
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:41
  */
 

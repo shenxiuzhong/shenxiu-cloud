@@ -27,7 +27,7 @@ import java.util.Map;
  * directly.
  * 自定义熔断器
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/4 11:15
  */
 public final class ShenXiuSentinelFeign {

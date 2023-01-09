@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * 用户对象 sys_user
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:23
  */
 

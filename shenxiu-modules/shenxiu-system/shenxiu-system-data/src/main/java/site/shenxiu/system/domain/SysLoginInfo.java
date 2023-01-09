@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * 系统访问记录表 sys_login_info
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:22
  */
 

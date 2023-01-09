@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 数据字典数据 API定义
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/30 16:04
  * @definition 数据字典数据api定义
  */

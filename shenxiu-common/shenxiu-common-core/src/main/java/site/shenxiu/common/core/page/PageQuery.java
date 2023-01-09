@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 分页查询实体类
- * @author ShenXiu 
+ * @author shenxiu 
  * @version 2022/11/6 20:39
  */
 @Data

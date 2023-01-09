@@ -3,7 +3,7 @@ package site.shenxiu.common.core.constant;
 /**
  * 返回状态码
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/10/31 9:57
  * @see java.net.HttpURLConnection
  */

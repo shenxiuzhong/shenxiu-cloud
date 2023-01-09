@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * 响应信息主体
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/10/31 10:08
  */
 @Data

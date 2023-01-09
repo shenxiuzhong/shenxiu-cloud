@@ -15,7 +15,7 @@ import site.shenxiu.common.loadbalancer.core.ShenXiuLoadBalancer;
 /**
  * 自定义负载均衡客户端配置
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/6 21:03
  */
 @SuppressWarnings("all")

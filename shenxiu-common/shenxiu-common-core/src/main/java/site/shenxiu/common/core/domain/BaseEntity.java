@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * Entity基类
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 13:52
  */
 @Data

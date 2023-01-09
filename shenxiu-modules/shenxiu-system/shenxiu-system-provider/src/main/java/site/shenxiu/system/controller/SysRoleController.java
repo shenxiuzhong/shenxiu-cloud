@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * 角色处置类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/12/5 17:02
  */
 @RequiredArgsConstructor

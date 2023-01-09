@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
 * 针对表【sys_notice(通知公告表)】的数据库操作Service
-* @author ShenXiu
+* @author shenxiu
 * @version 2022-11-24 15:16:02
 */
 public interface SysNoticeService{

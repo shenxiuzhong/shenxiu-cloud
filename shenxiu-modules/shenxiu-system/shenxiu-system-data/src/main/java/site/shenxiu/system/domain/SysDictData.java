@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 /**
  * 字典数据表 sys_dict_data
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:23
  */
 

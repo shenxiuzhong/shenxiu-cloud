@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  * 部门表 sys_dept
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:13
  */
 

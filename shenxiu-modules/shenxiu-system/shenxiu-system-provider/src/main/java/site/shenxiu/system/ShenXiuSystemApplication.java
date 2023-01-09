@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 神秀系统模块
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/24 9:23
  */
 @SpringBootApplication

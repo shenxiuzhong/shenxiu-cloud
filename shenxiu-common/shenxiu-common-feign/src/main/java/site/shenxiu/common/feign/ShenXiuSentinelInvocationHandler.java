@@ -25,7 +25,7 @@ import static feign.Util.checkNotNull;
 /**
  * shenxiu sentinel handle invocation
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/4 11:11
  */
 public class ShenXiuSentinelInvocationHandler implements InvocationHandler {

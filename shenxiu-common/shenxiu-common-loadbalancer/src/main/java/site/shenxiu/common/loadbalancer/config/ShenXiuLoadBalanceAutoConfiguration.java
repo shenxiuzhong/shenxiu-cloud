@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 自定义负载均衡自动配置
  * 
- * @author ShenXiu 
+ * @author shenxiu 
  * @version 2022/11/6 21:10
  */
 @Configuration(proxyBeanMethods = false)

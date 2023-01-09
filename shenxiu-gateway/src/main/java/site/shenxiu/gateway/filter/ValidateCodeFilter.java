@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 验证码过滤器
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/29 11:49
  */
 @Component

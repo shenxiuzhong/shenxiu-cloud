@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
 * 针对表【sys_dept(部门表)】的数据库操作Service实现
-* @author ShenXiu
+* @author shenxiu
 * @version 2022-11-24 14:58:02
 */
 @RequiredArgsConstructor

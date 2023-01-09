@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * feign拦截器, 在feign请求发出之前，加入一些操作
  * 
- * @author ShenXiu 
+ * @author shenxiu 
  * @version 2022/11/4 11:19
  */
 @Component

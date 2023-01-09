@@ -4,7 +4,7 @@ package site.shenxiu.common.core.constant;
  * 通用常量信息
  *
  * 
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/1 14:13
  */
 public interface Constants {

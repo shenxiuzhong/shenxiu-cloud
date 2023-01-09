@@ -13,7 +13,7 @@ import site.shenxiu.common.core.utils.SqlUtils;
 /**
  * mybatis-plus 分页工具类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/23 16:57
  */
 public class PageUtils {

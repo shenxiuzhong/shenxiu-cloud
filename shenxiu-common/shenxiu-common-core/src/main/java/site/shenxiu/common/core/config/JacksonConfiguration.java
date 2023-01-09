@@ -19,7 +19,7 @@ import java.util.TimeZone;
 
 /**
  * Jackson配置
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/2 21:16
  */
 @Slf4j

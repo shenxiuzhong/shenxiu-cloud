@@ -3,7 +3,7 @@ package site.shenxiu.common.core.exception;
 /**
  * 业务异常
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/24 13:23
  */
 public class BusinessException extends RuntimeException {

@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  * 全局异常处理
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/12/1 16:53
  */
 @Slf4j

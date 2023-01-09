@@ -2,7 +2,7 @@ package site.shenxiu.common.core.exception;
 
 /**
  * 验证异常
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/24 13:26
  */
 public class ValidationException extends RuntimeException {

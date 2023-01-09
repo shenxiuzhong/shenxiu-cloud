@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 字典类型 处置类
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/30 16:11
  */
 @RequiredArgsConstructor

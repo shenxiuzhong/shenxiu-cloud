@@ -3,7 +3,7 @@ package site.shenxiu.common.core.constant;
 /**
  * 常用字符常量
  * @see StringConstants
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/1 12:41
  */
 public interface CharConstants {

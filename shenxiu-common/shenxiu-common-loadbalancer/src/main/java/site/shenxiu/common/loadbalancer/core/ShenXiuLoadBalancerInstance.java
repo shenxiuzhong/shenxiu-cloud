@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 /**
  * 负载均衡host属性获取
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/6 21:30
  */
 @Slf4j

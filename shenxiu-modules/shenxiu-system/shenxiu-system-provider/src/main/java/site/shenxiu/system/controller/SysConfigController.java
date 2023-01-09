@@ -14,7 +14,7 @@ import site.shenxiu.system.service.SysConfigService;
 /**
  * 参数配置 处置类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/24 11:45
  */
 @RequiredArgsConstructor

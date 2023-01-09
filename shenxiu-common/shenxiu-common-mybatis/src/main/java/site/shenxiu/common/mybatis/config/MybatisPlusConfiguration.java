@@ -18,7 +18,7 @@ import site.shenxiu.common.mybatis.handler.InsertAndUpdateMetaObjectHandler;
 /**
  * mybatis-plus配置类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/23 16:45
  */
 @Configuration

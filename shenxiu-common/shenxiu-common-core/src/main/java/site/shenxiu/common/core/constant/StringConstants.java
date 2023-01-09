@@ -4,7 +4,7 @@ package site.shenxiu.common.core.constant;
  * 常用字符串常量定义
  * @see CharConstants
  * @see XmlConstants
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/1 12:41
  */
 public interface StringConstants {

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 忽略文件属性配置
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/28 16:33
  */
 @Data

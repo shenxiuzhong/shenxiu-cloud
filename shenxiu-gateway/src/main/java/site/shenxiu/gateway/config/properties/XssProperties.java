@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Xss跨站脚本配置
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/28 14:30
  */
 

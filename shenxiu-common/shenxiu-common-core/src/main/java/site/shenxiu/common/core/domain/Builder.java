@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 /**
  * 通用的 Builder 模式构建器
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/4 14:06
  */
 public class Builder<T> {

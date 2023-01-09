@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 /**
  * 通知公告表 sys_notice
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:31
  */
 @Data

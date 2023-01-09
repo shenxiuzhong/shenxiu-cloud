@@ -11,7 +11,7 @@ import site.shenxiu.common.core.domain.BaseEntity;
 /**
  * 用户和角色关联 sys_user_role
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/16 16:44
  */
 

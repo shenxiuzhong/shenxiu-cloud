@@ -8,7 +8,7 @@ import site.shenxiu.common.core.exception.BusinessException;
 /**
  * sql操作工具类
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/29 17:23
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

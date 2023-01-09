@@ -10,7 +10,7 @@ import site.shenxiu.gateway.enums.CaptchaType;
 /**
  * 验证码属性配置
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/28 16:14
  */
 @Data

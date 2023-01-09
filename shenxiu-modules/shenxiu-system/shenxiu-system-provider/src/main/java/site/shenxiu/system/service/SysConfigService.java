@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 针对表【sys_config(参数配置表)】的数据库操作Service
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/23 16:00
  */
 public interface SysConfigService {

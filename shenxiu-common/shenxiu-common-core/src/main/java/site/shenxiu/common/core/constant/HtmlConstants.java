@@ -2,7 +2,7 @@ package site.shenxiu.common.core.constant;
 /**
  * 常用html常量
  *
- * @author ShenXiu
+ * @author shenxiu
  * @version 2022/11/1 12:41
  */
 public interface HtmlConstants {
